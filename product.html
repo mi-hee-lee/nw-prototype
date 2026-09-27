@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAD Logo Ball Cap | Nice Weather</title>
+    <meta name="description" content="FAD Logo Ball Cap 상품 상세 페이지" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="product.css" />
+  </head>
+  <body class="product-body">
+    <header class="site-header">
+      <button class="icon-button menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+        <picture>
+          <source media="(max-width: 800px)" srcset="assets/nav-mobile-menu.svg" />
+          <img src="assets/nav-menu.svg" alt="" />
+        </picture>
+      </button>
+      <a class="wordmark" href="index.html" aria-label="Nice Weather 홈">
+        <picture>
+          <source media="(max-width: 800px)" srcset="assets/nav-mobile-logo.svg" />
+          <img src="assets/nav-logo.svg" alt="NICE WEATHER" />
+        </picture>
+      </a>
+      <div class="header-tools">
+        <button class="icon-button search-toggle" type="button" aria-label="검색 열기"><img src="assets/nav-search.svg" alt="" /></button>
+        <button class="icon-button account-button" type="button" aria-label="마이페이지"><img src="assets/nav-user.svg" alt="" /></button>
+        <button class="icon-button cart-toggle" type="button" aria-label="장바구니 열기">
+          <picture>
+            <source media="(max-width: 800px)" srcset="assets/nav-mobile-bag.svg" />
+            <img src="assets/nav-bag.svg" alt="" />
+          </picture>
+        </button>
+        <a class="weather-orbit" href="index.html#stories" aria-label="Discover Nice Weather"><img src="assets/nav-planet.gif" alt="" /></a>
+      </div>
+    </header>
+
+    <aside class="side-menu" aria-hidden="true">
+      <button class="menu-close" type="button" aria-label="메뉴 닫기"><img src="assets/nav-close.svg" alt="" /></button>
+      <div class="brand-tabs" role="tablist" aria-label="브랜드 전환">
+        <button class="brand-tab is-active" type="button" role="tab" aria-selected="true" data-brand="market">
+          <span><img class="brand-logo logo-active" src="assets/nav-market-logo.svg" alt="" /><img class="brand-logo logo-inactive" src="assets/nav-market-logo-inactive.svg" alt="" /></span>
+          <strong>NICE WEATHER<br />MARKET</strong>
+        </button>
+        <button class="brand-tab" type="button" role="tab" aria-selected="false" data-brand="yay">
+          <span><img class="brand-logo logo-active" src="assets/nav-yay-logo-active.svg" alt="" /><img class="brand-logo logo-inactive" src="assets/nav-yay-logo.svg" alt="" /></span>
+          <strong>Yin and Yang</strong>
+        </button>
+      </div>
+      <nav class="category-menu" aria-label="카테고리 메뉴" aria-live="polite">
+        <div><a href="index.html#new">What’s new</a><a href="index.html#products">Fashion</a><a href="index.html#stories">Food</a><a href="index.html#stories">Life</a><a href="index.html#stories">Culture</a></div>
+        <div><a href="index.html#products">Outdoor</a><a href="index.html#products">Vegan</a></div>
+      </nav>
+      <nav class="menu-links" aria-label="콘텐츠 메뉴"><a href="index.html#stories">Discover</a><a href="#footer">Brand</a></nav>
+      <a class="nice-planet-button" href="index.html#stories"><img src="assets/nav-nice-planet.gif" alt="Nice Planet" /></a>
+      <nav class="menu-bottom" aria-label="고객지원 메뉴"><a href="#footer">회사소개</a><a href="#footer">공지사항</a><a href="#footer">자주 묻는 질문</a></nav>
+    </aside>
+    <div class="scrim" hidden></div>
+
+    <div class="search-panel" aria-hidden="true">
+      <label for="site-search">Search</label>
+      <div class="search-row"><input id="site-search" type="search" placeholder="무엇을 찾고 있나요?" /><button class="search-submit" type="button">Go</button></div>
+    </div>
+
+    <main class="product-page" id="top">
+      <section class="product-top">
+        <header class="mobile-product-info">
+          <p>FAD</p>
+          <h1>LOGO BALL CAP</h1>
+          <strong>₩ 45,000</strong>
+        </header>
+        <div class="product-gallery">
+          <div class="product-gallery__stage" aria-live="polite">
+            <button class="gallery-hit gallery-prev" type="button" aria-label="이전 이미지"></button>
+            <div class="product-slides">
+              <img class="is-active" src="assets/product-01.avif" alt="FAD Logo Ball Cap 착용 정면" />
+              <img src="assets/product-02.avif" alt="FAD Logo Ball Cap 착용 측면" />
+              <img src="assets/product-03.avif" alt="FAD Logo Ball Cap 디테일" />
+              <img src="assets/product-04.avif" alt="FAD Logo Ball Cap 스타일링" />
+              <img src="assets/product-05.avif" alt="FAD Logo Ball Cap 후면" />
+              <img src="assets/figma-cap.png" alt="FAD Logo Ball Cap 네이비 착용 이미지" />
+            </div>
+            <button class="gallery-hit gallery-next" type="button" aria-label="다음 이미지"></button>
+            <span class="gallery-count"><b>1</b> / 6</span>
+          </div>
+          <button class="gallery-more" type="button"><span>＋</span> Show more</button>
+        </div>
+
+        <div class="product-sheet-dim" hidden></div>
+        <aside class="product-purchase" aria-label="상품 구매 정보" aria-hidden="false">
+          <div class="purchase-top">
+            <header class="product-heading">
+              <p>FAD</p>
+              <h1>LOGO BALL CAP</h1>
+              <strong>₩ 45,000</strong>
+            </header>
+            <div class="product-info-tabs" role="tablist" aria-label="상품 안내">
+              <button class="is-active" type="button" role="tab" data-copy="신규 회원 및 멤버십 고객을 위한 적립 혜택이 제공됩니다.">혜택 안내</button>
+              <button type="button" role="tab" data-copy="결제 완료 후 영업일 기준 2–3일 이내 출고됩니다.">주문 및 배송</button>
+              <button type="button" role="tab" data-copy="수령 후 7일 이내 미사용 상품에 한해 교환 및 환불이 가능합니다.">교환 및 환불</button>
+            </div>
+            <p class="product-info-copy">신규 회원 및 멤버십 고객을 위한 적립 혜택이 제공됩니다.</p>
+            <div class="product-options">
+              <div class="option-heading"><span>Option</span><button class="size-info-button" type="button">Size Info</button></div>
+              <div class="product-select" data-select-name="color">
+                <button class="product-select__trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                  <span>COLOR</span><img src="assets/product-chevron.svg" alt="" />
+                </button>
+                <div class="product-select__menu" role="listbox" aria-label="색상 선택" hidden>
+                  <button class="product-select__option" type="button" role="option" aria-selected="false" data-value="grey">LIGHT GREY</button>
+                  <button class="product-select__option" type="button" role="option" aria-selected="false" data-value="navy">NAVY</button>
+                  <button class="product-select__option" type="button" role="option" aria-selected="false" disabled>BLACK (SOLD OUT)</button>
+                </div>
+              </div>
+              <div class="product-select" data-select-name="size">
+                <button class="product-select__trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                  <span>SIZE</span><img src="assets/product-chevron.svg" alt="" />
+                </button>
+                <div class="product-select__menu" role="listbox" aria-label="사이즈 선택" hidden>
+                  <button class="product-select__option" type="button" role="option" aria-selected="false" data-value="free">FREE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="purchase-bottom">
+            <div class="quantity-control" aria-label="수량">
+              <button class="quantity-minus" type="button" aria-label="수량 줄이기" disabled><img src="assets/product-minus.svg" alt="" /></button>
+              <output>1</output>
+              <button class="quantity-plus" type="button" aria-label="수량 늘리기"><img src="assets/product-plus.svg" alt="" /></button>
+            </div>
+            <div class="product-total"><span>Total</span><strong>₩ <b>0</b></strong></div>
+            <div class="purchase-actions"><button class="add-to-bag" type="button">Add to bag</button><button class="buy-now" type="button">Buy now</button></div>
+            <p class="purchase-status" role="status" aria-live="polite"></p>
+          </div>
+          <section class="additional-info-panel" aria-hidden="true">
+            <button class="additional-info-close" type="button" aria-label="안내 닫기"><span class="desktop-close">×</span><span class="mobile-back">←</span></button>
+            <h2>혜택안내</h2>
+            <div class="additional-info-body"></div>
+            <dl class="additional-info-table"></dl>
+          </section>
+        </aside>
+      </section>
+
+      <div class="product-lower">
+        <section class="pairing-section" aria-labelledby="pairing-title">
+          <div class="section-heading">
+            <h2 id="pairing-title">Pairing Item<span class="pairing-plural">s</span></h2>
+            <div class="pairing-controls">
+              <button class="pairing-prev" type="button" aria-label="이전 페어링 상품" disabled><img src="assets/pairing-arrow-left-disabled.svg" alt="" /></button>
+              <output><b>1</b> / 2</output>
+              <button class="pairing-next" type="button" aria-label="다음 페어링 상품"><img src="assets/pairing-arrow-right.svg" alt="" /></button>
+            </div>
+          </div>
+          <div class="pairing-viewport">
+            <div class="pairing-track">
+              <article class="pairing-card">
+                <div class="pairing-card__image"><img src="assets/pairing-cat-grey.avif" alt="FAD Cat Key Ring Light Grey" /><button class="wishlist-button" type="button" aria-label="FAD Cat Key Ring Light Grey 찜하기" aria-pressed="false"><img src="assets/product-wishlist.svg" alt="" /></button></div>
+                <div class="pairing-card__text"><p><span>FAD</span><img src="assets/product-card-chevron.svg" alt="" /></p><h3>CAT KEY RING (LIGHT GREY)</h3><strong>₩ 42,000</strong></div>
+              </article>
+              <article class="pairing-card">
+                <div class="pairing-card__image"><img src="assets/pairing-cat-black.avif" alt="FAD Cat Key Ring Black" /><button class="wishlist-button" type="button" aria-label="FAD Cat Key Ring Black 찜하기" aria-pressed="false"><img src="assets/product-wishlist.svg" alt="" /></button></div>
+                <div class="pairing-card__text"><p><span>FAD</span><img src="assets/product-card-chevron.svg" alt="" /></p><h3>CAT KEY RING (BLACK)</h3><strong>₩ 42,000</strong></div>
+              </article>
+              <article class="pairing-card">
+                <div class="pairing-card__image"><img src="assets/pairing-cargo.avif" alt="FAD Wide Cargo Pants Charcoal" /><button class="wishlist-button" type="button" aria-label="FAD Wide Cargo Pants Charcoal 찜하기" aria-pressed="false"><img src="assets/product-wishlist.svg" alt="" /></button></div>
+                <div class="pairing-card__text"><p><span>FAD</span><img src="assets/product-card-chevron.svg" alt="" /></p><h3>WIDE CARGO PANTS (CHARCOAL)</h3><strong>₩ 189,000</strong></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="size-section" id="size-info" aria-labelledby="size-title">
+          <h2 id="size-title">Size info</h2>
+          <p>기준에 따라 최대 ±2cm 정도의 사이즈 편차가 있을 수 있습니다. (단위 : CM)</p>
+          <img src="assets/product-size-guide.avif" alt="볼캡 측정 위치 A, B, C 안내" />
+          <dl class="size-table"><div><dt>A 모자둘레</dt><dd>58</dd></div><div><dt>B 높이</dt><dd>16</dd></div><div><dt>C 챙 길이</dt><dd>6.5</dd></div></dl>
+        </section>
+      </div>
+    </main>
+
+    <div class="mobile-purchase-bar" aria-label="상품 구매 도구">
+      <button class="mobile-share" type="button" aria-label="상품 공유"><img src="assets/product-share.svg" alt="" /></button>
+      <button class="mobile-bookmark" type="button" aria-label="상품 찜하기" aria-pressed="false"><img src="assets/product-bookmark.svg" alt="" /></button>
+      <button class="mobile-buy-trigger" type="button">Buy</button>
+    </div>
+
+    <footer class="site-footer" id="footer">
+      <div class="company-info">
+        <div class="company-primary"><div class="company-primary__row"><p><span>회사</span> 주식회사 나이스웨더</p><p><span>대표</span> 노승훈</p><p><span>본사</span> 서울 강남구 강남대로160길 35-5, 1층</p></div><div class="company-primary__row"><p><span>통신판매업</span> 제2020-서울강남-03642호</p><p><span>사업자번호</span> <a href="#">693-81-02003</a></p></div></div>
+        <div class="company-secondary"><div class="copyright-contact"><p>Copyright ⓒ NICE WEATHER, All rights reserved.</p><a href="tel:025470073">02-547-0073</a><a href="mailto:niceweather.seoul@gmail.com">niceweather.seoul@gmail.com</a></div><p class="escrow-notice">고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰이 가입한 PG에스크로 구매안전서비스를 이용하실 수 있습니다. <a href="#">서비스 가입사실 확인</a></p><div class="footer-legal"><a href="#">Terms of use</a><a href="#">Privacy policy</a></div></div>
+      </div>
+      <nav class="footer-links" aria-label="푸터 메뉴"><a href="#">ABOUT US</a><a href="#">NOTICE</a><a href="#">STOCKIST</a><a href="#">FAQ</a></nav>
+      <nav class="footer-socials" aria-label="소셜 채널"><a href="#" aria-label="Instagram"><img src="assets/footer-instagram.svg" alt="" /></a><a href="#" aria-label="Kakao Channel"><img src="assets/footer-kakao-channel.svg" alt="" /></a></nav>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="product.js"></script>
+  </body>
+</html>

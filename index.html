@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nice Weather</title>
+    <meta name="description" content="일상의 좋은 순간을 소개하는 라이프스타일 편집숍 나이스웨더입니다." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <button class="icon-button menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+        <picture>
+          <source media="(max-width: 800px)" srcset="assets/nav-mobile-menu.svg" />
+          <img src="assets/nav-menu.svg" alt="" />
+        </picture>
+      </button>
+      <a class="wordmark" href="#top" aria-label="Nice Weather 홈">
+        <picture>
+          <source media="(max-width: 800px)" srcset="assets/nav-mobile-logo.svg" />
+          <img src="assets/nav-logo.svg" alt="NICE WEATHER" />
+        </picture>
+      </a>
+      <div class="header-tools">
+        <button class="icon-button search-toggle" type="button" aria-label="검색 열기">
+          <img src="assets/nav-search.svg" alt="" />
+        </button>
+        <button class="icon-button account-button" type="button" aria-label="마이페이지">
+          <img src="assets/nav-user.svg" alt="" />
+        </button>
+        <button class="icon-button cart-toggle" type="button" aria-label="장바구니 열기">
+          <picture>
+            <source media="(max-width: 800px)" srcset="assets/nav-mobile-bag.svg" />
+            <img src="assets/nav-bag.svg" alt="" />
+          </picture>
+        </button>
+        <a class="weather-orbit" href="#stories" aria-label="Discover Nice Weather">
+          <img src="assets/nav-planet.gif" alt="" />
+        </a>
+      </div>
+    </header>
+
+    <aside class="side-menu" aria-hidden="true">
+      <button class="menu-close" type="button" aria-label="메뉴 닫기">
+        <img src="assets/nav-close.svg" alt="" />
+      </button>
+      <div class="brand-tabs" role="tablist" aria-label="브랜드 전환">
+        <button class="brand-tab is-active" type="button" role="tab" aria-selected="true" data-brand="market">
+          <span>
+            <img class="brand-logo logo-active" src="assets/nav-market-logo.svg" alt="" />
+            <img class="brand-logo logo-inactive" src="assets/nav-market-logo-inactive.svg" alt="" />
+          </span>
+          <strong>NICE WEATHER<br />MARKET</strong>
+        </button>
+        <button class="brand-tab" type="button" role="tab" aria-selected="false" data-brand="yay">
+          <span>
+            <img class="brand-logo logo-active" src="assets/nav-yay-logo-active.svg" alt="" />
+            <img class="brand-logo logo-inactive" src="assets/nav-yay-logo.svg" alt="" />
+          </span>
+          <strong>Yin and Yang</strong>
+        </button>
+      </div>
+      <nav class="category-menu" aria-label="카테고리 메뉴" aria-live="polite">
+        <div>
+          <a href="#new">What’s new</a>
+          <a href="#products">Fashion</a>
+          <a href="#stories">Food</a>
+          <a href="#stories">Life</a>
+          <a href="#stories">Culture</a>
+        </div>
+        <div>
+          <a href="#products">Outdoor</a>
+          <a href="#products">Vegan</a>
+        </div>
+      </nav>
+      <nav class="menu-links" aria-label="콘텐츠 메뉴">
+        <a href="#stories">Discover</a>
+        <a href="#footer">Brand</a>
+      </nav>
+      <a class="nice-planet-button" href="#stories"><img src="assets/nav-nice-planet.gif" alt="Nice Planet" /></a>
+      <nav class="menu-bottom" aria-label="고객지원 메뉴">
+        <a href="#footer">회사소개</a>
+        <a href="#footer">공지사항</a>
+        <a href="#footer">자주 묻는 질문</a>
+      </nav>
+    </aside>
+    <div class="scrim" hidden></div>
+
+    <div class="search-panel" aria-hidden="true">
+      <label for="site-search">Search</label>
+      <div class="search-row">
+        <input id="site-search" type="search" placeholder="무엇을 찾고 있나요?" />
+        <button class="search-submit" type="button">Go</button>
+      </div>
+    </div>
+
+    <main id="top">
+      <a class="lead-story">
+        <img src="assets/figma-lead-story.png" alt="차량 옆에서 흰 티셔츠를 입고 있는 인물" />
+        <div class="lead-story__content">
+          <h1>CAN UNDERWEAR AND SOCKS <span>BE SUSTAINABLE?</span></h1>
+          <span>View more</span>
+        </div>
+      </a>
+
+      <div class="figma-home-content">
+        <section class="figma-dual">
+          <div class="figma-story-copy is-black">
+            <h2>COSMOS STUDIO<br />PANCAKE PURE<br />WHITE</h2>
+            <a class="figma-button is-lime">View more</a>
+          </div>
+          <a class="figma-story-image">
+            <img src="assets/figma-cosmos.png" alt="Cosmos Studio Pancake Pure White 조명" />
+          </a>
+        </section>
+
+        <section class="figma-dual">
+          <a class="figma-story-image">
+            <img src="assets/figma-camera.png" alt="Nice Weather x Life 일회용 필름 카메라" />
+          </a>
+          <div class="figma-story-copy is-lime">
+            <h2>NICE WEATHER × LIFE<br />SINGLE USE FILM<br />CAMERA 27</h2>
+            <a class="figma-button is-black">View more</a>
+          </div>
+        </section>
+
+        <section class="figma-product-grid" aria-label="Nice Weather products">
+          <a class="figma-product-card fad-product-link" href="product.html">
+            <span class="figma-product-media"><img src="assets/figma-cap.png" alt="FAD 로고 볼캡" /></span>
+            <div class="figma-product-info is-blue">
+              <h2>FAD<br />LOGO BALL CAP</h2>
+              <span class="figma-button is-outline-light">Check out</span>
+            </div>
+          </a>
+          <article class="figma-product-card">
+            <a><img src="assets/figma-nalgene.png" alt="Nice Weather Nalgene Bottle 1L" /></a>
+            <div class="figma-product-info is-blue">
+              <h2>NICE WEATHER<br />NALGENE BOTTLE<br />1L</h2>
+              <a class="figma-button is-outline-light">Check out</a>
+            </div>
+          </article>
+          <article class="figma-product-card">
+            <a><img src="assets/figma-organic-towel.png" alt="Nice Weather Organic Towel" /></a>
+            <div class="figma-product-info is-white">
+              <h2>NICE WEATHER<br />ORGANIC TOWEL</h2>
+              <a class="figma-button is-outline-blue">View more</a>
+            </div>
+          </article>
+          <article class="figma-product-card">
+            <a><img src="assets/figma-thermometer.png" alt="Nice Weather Thermometer Keyring" /></a>
+            <div class="figma-product-info is-white">
+              <h2>NICE WEATHER<br />THERMOMETER<br />KEYRING</h2>
+              <a class="figma-button is-outline-blue">View more</a>
+            </div>
+          </article>
+        </section>
+
+        <a class="figma-triptych">
+          <span class="figma-triptych__images" aria-hidden="true">
+            <img src="assets/figma-blue-look.png" alt="" />
+            <img src="assets/figma-blue-look.png" alt="" />
+            <img src="assets/figma-blue-look.png" alt="" />
+          </span>
+          <span class="figma-triptych__content">
+            <strong>A PERFECT MOMENT IN AN IMPERFECT WORLD</strong>
+            <span class="figma-button is-outline-lime">View more</span>
+          </span>
+        </a>
+
+        <section class="figma-dual">
+          <div class="figma-story-copy is-black">
+            <h2>INTO A WORLD OF<br />FLUID, SENSUAL LINES</h2>
+            <a class="figma-button is-lime">View more</a>
+          </div>
+          <a class="figma-story-image">
+            <img src="assets/figma-sensual-lines.png" alt="검은 재킷을 입은 인물" />
+          </a>
+        </section>
+
+        <section class="figma-dual">
+          <a class="figma-story-image">
+            <img src="assets/figma-golden-travel.png" alt="Toiletpaper 매거진 비주얼" />
+          </a>
+          <div class="figma-story-copy is-lime">
+            <h2>CAPTURING THE GOLDEN AGE<br />OF GLAMOROUS TRAVEL</h2>
+            <a class="figma-button is-black">View more</a>
+          </div>
+        </section>
+
+        <section class="figma-product-grid" aria-label="More Nice Weather stories">
+          <article class="figma-product-card">
+            <a><img src="assets/figma-stripe-towel.png" alt="Nice Weather Apparel Stripe Towel" /></a>
+            <div class="figma-product-info is-blue">
+              <h2>NICE WEATHER<br />APPAREL<br />STRIPE TOWEL</h2>
+              <a class="figma-button is-outline-light">Check out</a>
+            </div>
+          </article>
+          <article class="figma-product-card">
+            <a><img src="assets/figma-nalgene.png" alt="Nice Weather Nalgene Bottle 1L" /></a>
+            <div class="figma-product-info is-blue">
+              <h2>NICE WEATHER<br />NALGENE BOTTLE<br />1L</h2>
+              <a class="figma-button is-outline-light">Check out</a>
+            </div>
+          </article>
+          <article class="figma-product-card">
+            <a><img src="assets/figma-sensual-lines-alt.png" alt="하늘 위 Nice Weather 인센스" /></a>
+            <div class="figma-product-info is-white">
+              <h2>A WORLD OF FLUID,<br />SENSUAL LINES</h2>
+              <a class="figma-button is-outline-blue">View more</a>
+            </div>
+          </article>
+          <article class="figma-product-card">
+            <a><img src="assets/figma-golden-travel-alt.png" alt="Cosmos Studio 조명" /></a>
+            <div class="figma-product-info is-white">
+              <h2>THE GOLDEN AGE<br />OF GLAMOROUS TRAVEL</h2>
+              <a class="figma-button is-outline-blue">View more</a>
+            </div>
+          </article>
+        </section>
+      </div>
+
+      <section class="feature-index" aria-label="Latest features">
+        <a class="index-card">
+          <img src="assets/feature-26.jpg" alt="Visit: Rocka Doodle" />
+          <h2>Visit: Rocka Doodle</h2>
+        </a>
+        <a class="index-card">
+          <img src="assets/feature-25.jpg" alt="Visit: Parkmoonchi" />
+          <h2>Visit: Parkmoonchi</h2>
+        </a>
+        <a class="index-card">
+          <img src="assets/feature-24.jpg" alt="Visit: Good Morning Town" />
+          <h2>Visit: Good Morning Town</h2>
+        </a>
+        <a class="index-card">
+          <img src="assets/feature-23.jpg" alt="Visit: Pohs-Tihs" />
+          <h2>Visit: Pohs-Tihs</h2>
+        </a>
+      </section>
+
+      <a class="editorial-hero">
+        <img src="assets/feature-22.jpg" alt="Summer T-Shirts" />
+        <div class="editorial-caption">
+          <span>FEATURE 22</span>
+          <h2>SUMMER T-SHIRTS</h2>
+          <p>View feature</p>
+        </div>
+      </a>
+
+      <section class="editorial-split">
+        <a class="split-image">
+          <img src="assets/feature-21.jpg" alt="Visit: Jaybe Lee" />
+        </a>
+        <div class="split-copy blue-panel">
+          <span>FEATURE 21</span>
+          <h2>VISIT:<br />JAYBE LEE</h2>
+          <a>View feature <span class="external-arrow">↗</span></a>
+        </div>
+      </section>
+
+      <a class="editorial-hero dark-caption">
+        <img src="assets/feature-20.jpg" alt="MULEBOY x NICE WEATHER" />
+        <div class="editorial-caption">
+          <span>FEATURE 20</span>
+          <h2>MULEBOY<br />× NICE WEATHER</h2>
+          <p>View feature</p>
+        </div>
+      </a>
+
+      <section class="editorial-split is-reversed">
+        <div class="split-copy lime-panel">
+          <span>FEATURE 19</span>
+          <h2>HANWHA EAGLES<br />× NICE WEATHER</h2>
+          <a>View feature <span class="external-arrow">↗</span></a>
+        </div>
+        <a class="split-image">
+          <img src="assets/feature-19.jpg" alt="HANWHA EAGLES x NICE WEATHER" />
+        </a>
+      </section>
+
+      <a class="editorial-hero caption-bottom">
+        <img src="assets/feature-18.jpg" alt="SHOP FAST REMEMBER SLOW" />
+        <div class="editorial-caption">
+          <span>FEATURE 18</span>
+          <h2>SHOP FAST<br />REMEMBER SLOW</h2>
+          <p>View feature</p>
+        </div>
+      </a>
+
+      <section class="feature-grid" aria-label="More features">
+        <a class="feature-card">
+          <img src="assets/feature-17.jpg" alt="WARMTH, WORN AND CARRIED" />
+          <div><span>FEATURE 17</span><h2>WARMTH, WORN AND CARRIED</h2></div>
+        </a>
+        <a class="feature-card">
+          <img src="assets/feature-16.jpg" alt="FLEECE SMALL BAG" />
+          <div><span>FEATURE 16</span><h2>FLEECE SMALL BAG</h2></div>
+        </a>
+        <a class="feature-card">
+          <img src="assets/feature-15.jpg" alt="BASEBALL LOGO CAP" />
+          <div><span>FEATURE 15</span><h2>BASEBALL LOGO CAP</h2></div>
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="footer">
+      <div class="company-info">
+        <div class="company-primary">
+          <div class="company-primary__row">
+            <p><span>회사</span> 주식회사 나이스웨더</p>
+            <p><span>대표</span> 노승훈</p>
+            <p><span>본사</span> 서울 강남구 강남대로160길 35-5, 1층</p>
+          </div>
+          <div class="company-primary__row">
+            <p><span>통신판매업</span> 제2020-서울강남-03642호</p>
+            <p><span>사업자번호</span> <a href="#">693-81-02003</a></p>
+          </div>
+        </div>
+        <div class="company-secondary">
+          <div class="copyright-contact">
+            <p>Copyright ⓒ NICE WEATHER, All rights reserved.</p>
+            <a href="tel:025470073">02-547-0073</a>
+            <a href="mailto:niceweather.seoul@gmail.com">niceweather.seoul@gmail.com</a>
+          </div>
+          <p class="escrow-notice">고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰이 가입한 PG에스크로 구매안전서비스를 이용하실 수 있습니다. <a href="#">서비스 가입사실 확인</a></p>
+          <div class="footer-legal"><a href="#">Terms of use</a><a href="#">Privacy policy</a></div>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="푸터 메뉴">
+        <a href="#">ABOUT US</a><a href="#">NOTICE</a><a href="#">STOCKIST</a><a href="#">FAQ</a>
+      </nav>
+      <nav class="footer-socials" aria-label="소셜 채널">
+        <a href="#" aria-label="Instagram"><img src="assets/footer-instagram.svg" alt="" /></a>
+        <a href="#" aria-label="Kakao Channel"><img src="assets/footer-kakao-channel.svg" alt="" /></a>
+      </nav>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
