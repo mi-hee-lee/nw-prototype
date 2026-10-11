@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><title>Nice Weather · Framed Home Scroll Loop</title><style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f9fafb}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1095px;transform-origin:center;background:#f9fafb}
+.tablet{position:absolute;left:375px;top:109px;width:1170px;height:877px;border-radius:25px;background:#1c1c1e;box-shadow:0 0 0 1px #303032}
+.tablet-button{position:absolute;border-radius:1.561px;background:#2c2c2e}.tablet-power{right:64px;top:-2.602px;width:65px;height:5.204px}.tablet-volume{right:-2.602px;width:5.204px;height:64.526px}.tablet-volume-up{top:78px}.tablet-volume-down{top:155px}
+.camera{position:absolute;left:50%;top:3.5px;width:5px;height:5px;transform:translateX(-50%);border-radius:50%;background:#090909}
+#screen{position:absolute;left:12px;top:12px;width:1146px;height:853px;border-radius:13px;background:#fff;overflow:hidden;isolation:isolate}
+#home-frame{display:block;width:1440px;height:1071.833px;border:0;background:#fff;transform-origin:top left;transform:scale(.7958333333)}
+
+</style></head><body>
+<div id="stage"><div class="tablet"><div class="tablet-button tablet-power"></div><div class="tablet-button tablet-volume tablet-volume-up"></div><div class="tablet-button tablet-volume tablet-volume-down"></div><div class="camera"></div><div id="screen"><iframe id="home-frame" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ko&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+    &lt;meta name=&quot;robots&quot; content=&quot;noindex, nofollow, noarchive, nosnippet&quot; /&gt;
+    &lt;title&gt;Nice Weather&lt;/title&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;일상의 좋은 순간을 소개하는 라이프스타일 편집숍 나이스웨더입니다.&quot; /&gt;
+    &lt;style&gt;@font-face {
+  font-family: &quot;Pretendard&quot;;
+  src: url(&quot;https://mi-hee-lee.github.io/nw-prototype/font/Pretendard-Regular.otf&quot;) format(&quot;opentype&quot;);
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: &quot;Pretendard&quot;;
+  src: url(&quot;https://mi-hee-lee.github.io/nw-prototype/font/Pretendard-Medium.otf&quot;) format(&quot;opentype&quot;);
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: &quot;Pretendard&quot;;
+  src: url(&quot;https://mi-hee-lee.github.io/nw-prototype/font/Pretendard-SemiBold.otf&quot;) format(&quot;opentype&quot;);
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: &quot;Druk Wide&quot;;
+  src: url(&quot;https://mi-hee-lee.github.io/nw-prototype/https://mi-hee-lee.github.io/nw-prototype/font/Druk-WideMedium.woff2&quot;) format(&quot;woff2&quot;), url(&quot;https://mi-hee-lee.github.io/nw-prototype/font/Druk-WideMedium.woff&quot;) format(&quot;woff&quot;);
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: &quot;Druk Wide&quot;;
+  src: url(&quot;https://mi-hee-lee.github.io/nw-prototype/https://mi-hee-lee.github.io/nw-prototype/font/DrukWide-Bold.woff2&quot;) format(&quot;woff2&quot;), url(&quot;https://mi-hee-lee.github.io/nw-prototype/font/DrukWide-Bold.woff&quot;) format(&quot;woff&quot;);
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: &quot;Druk Wide&quot;;
+  src: url(&quot;https://mi-hee-lee.github.io/nw-prototype/https://mi-hee-lee.github.io/nw-prototype/font/DrukWide-Heavy.woff2&quot;) format(&quot;woff2&quot;), url(&quot;https://mi-hee-lee.github.io/nw-prototype/font/DrukWide-Heavy.woff&quot;) format(&quot;woff&quot;);
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: &quot;Druk Wide&quot;;
+  src: url(&quot;https://mi-hee-lee.github.io/nw-prototype/https://mi-hee-lee.github.io/nw-prototype/font/Druk-WideSuper.woff2&quot;) format(&quot;woff2&quot;), url(&quot;https://mi-hee-lee.github.io/nw-prototype/font/Druk-WideSuper.woff&quot;) format(&quot;woff&quot;);
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+:root {
+  --blue: #10069f;
+  --lime: #eaff58;
+  --black: #050505;
+  --white: #fff;
+  font-family: &quot;Druk Wide&quot;, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans KR&quot;, sans-serif;
+  font-weight: 500;
+  color: var(--black);
+  background: var(--white);
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { min-width: 320px; margin: 0; background: #fff; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+img { display: block; width: 100%; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 96px;
+  background: #fff;
+  color: var(--blue);
+}
+
+.wordmark {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 8px);
+  width: 222px;
+  height: 28px;
+  transform: translate(-50%, -50%);
+}
+
+.wordmark img { width: 222px; height: 28px; }
+.header-tools { position: absolute; top: 28px; right: 30px; display: flex; align-items: flex-start; gap: 8px; }
+.icon-button { width: 40px; height: 40px; padding: 8px; border: 0; border-radius: 20px; background: transparent; color: inherit; cursor: pointer; }
+.icon-button img { width: 24px; height: 24px; }
+.menu-toggle { position: absolute; top: 28px; left: 22px; }
+.weather-orbit { display: block; width: 40px; height: 40px; overflow: hidden; }
+.weather-orbit img { width: 40px; height: 40px; object-fit: cover; }
+
+.lead-story { position: relative; display: block; height: clamp(560px, 50vw, 720px); overflow: hidden; background: #a5d2f2; color: #000; }
+.lead-story &gt; img { height: 100%; object-fit: cover; object-position: center 44%; transition: transform .6s ease; }
+.lead-story:hover &gt; img { transform: scale(1.012); }
+.lead-story__content { position: absolute; bottom: 28px; left: 28px; width: fit-content; max-width: calc(100% - 56px); padding: 20px 22px 18px; background: #fff; }
+.lead-story__content h1 { max-width: 980px; margin: 0 0 18px; font-family: &quot;Druk Wide&quot;, Arial, sans-serif; font-size: clamp(38px, 4.8vw, 66px); font-weight: 600; line-height: 1.1; letter-spacing: 0; }
+.lead-story__content &gt; span { font-size: 14px; font-weight: 500; text-decoration: underline; text-underline-offset: 4px; }
+
+.figma-home-content { font-family: &quot;Pretendard&quot;, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans KR&quot;, sans-serif; }
+.figma-dual { display: grid; grid-template-columns: 1fr 1fr; height: clamp(500px, 40vw, 600px); background: #fff; }
+.figma-story-image { min-width: 0; overflow: hidden; background: #eee; }
+.figma-story-image img { height: 100%; object-fit: cover; transition: transform .5s ease; }
+.figma-story-image:hover img { transform: scale(1.012); }
+.figma-story-copy { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; justify-content: center; gap: 38px; padding: 38px 32px; background: #fff; color: #000; text-align: center; }
+.figma-story-copy h2 { width: 100%; margin: 0; font-size: clamp(36px, 4vw, 56px); font-weight: 600; line-height: 1.08; letter-spacing: 0; }
+.figma-story-copy.is-black, .figma-story-copy.is-lime { background: #fff; color: #000; }
+.figma-button { display: inline-block; width: auto; height: auto; align-self: center; border: 0; background: transparent; color: currentColor; font-size: 13px; font-weight: 500; line-height: 18px; text-decoration: underline; text-underline-offset: 4px; white-space: nowrap; }
+.figma-button.is-lime, .figma-button.is-black, .figma-button.is-outline-light, .figma-button.is-outline-blue, .figma-button.is-outline-lime { border: 0; background: transparent; color: currentColor; }
+
+.figma-product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: #000; }
+.figma-product-card { display: grid; grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) 132px; height: 560px; min-width: 0; background: #fff; }
+.figma-product-card &gt; a, .figma-product-media { display: block; min-width: 0; overflow: hidden; }
+.figma-product-card &gt; a img, .figma-product-media img { height: 100%; object-fit: cover; transition: transform .5s ease; }
+.figma-product-card &gt; a:hover img, .fad-product-link:hover .figma-product-media img { transform: scale(1.015); }
+.figma-product-info { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; justify-content: space-between; padding: 14px 16px 16px; background: #fff; color: #000; }
+.figma-product-info h2 { margin: 0; font-family: &quot;Druk Wide&quot;, Arial, sans-serif; font-size: clamp(17px, 1.55vw, 22px); font-weight: 700; line-height: 1.15; letter-spacing: 0; }
+.figma-product-info.is-blue, .figma-product-info.is-white { background: #fff; color: #000; }
+.figma-product-info .figma-button { align-self: flex-start; font-size: 12px; }
+
+.figma-triptych { position: relative; display: block; height: min(68vw, 720px); min-height: 520px; overflow: hidden; background: #eee; }
+.figma-triptych__images { display: grid; height: 100%; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: #000; }
+.figma-triptych__images img { display: block; width: 100%; height: 100%; min-width: 0; object-fit: cover; }
+.figma-triptych__images img:nth-child(1) { object-position: 34% center; }
+.figma-triptych__images img:nth-child(2) { object-position: 50% center; }
+.figma-triptych__images img:nth-child(3) { object-position: 66% center; }
+.figma-triptych__content { position: absolute; bottom: 28px; left: 28px; display: flex; width: fit-content; max-width: calc(100% - 56px); flex-direction: column; align-items: flex-start; gap: 16px; padding: 18px 20px 16px; background: var(--lime); color: #000; }
+.figma-triptych__content strong { font-size: clamp(34px, 4.6vw, 64px); font-weight: 600; line-height: 1.12; }
+.figma-triptych__content .figma-button { align-self: flex-start; }
+
+.feature-index { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 8px 4px 14px; }
+.index-card { display: grid; min-width: 0; grid-template-rows: minmax(0, 1fr) auto; gap: 10px; }
+.index-card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center; background: #f1f1f1; }
+.index-card h2 { margin: 0; padding: 0 8px; font-size: clamp(15px, 1.5vw, 21px); line-height: 1.05; text-align: center; text-transform: uppercase; }
+
+.editorial-hero { position: relative; display: block; height: min(68vw, 720px); min-height: 520px; overflow: hidden; background: #111; color: #fff; }
+.editorial-hero &gt; img { height: 100%; object-fit: cover; object-position: center 38%; transition: transform .5s ease; }
+.editorial-hero:hover &gt; img, .feature-card:hover img, .index-card:hover img { transform: scale(1.015); }
+.editorial-caption {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  width: fit-content;
+  max-width: calc(100% - 56px);
+  padding: 18px 20px 16px;
+  background: #fff;
+  color: #000;
+}
+.editorial-caption span, .split-copy span, .feature-card span { font-size: 12px; font-weight: 700; }
+.editorial-caption h2 { max-width: 900px; margin: 10px 0 12px; font-size: clamp(36px, 5.4vw, 78px); font-weight: 800; line-height: .9; letter-spacing: 0; text-transform: uppercase; }
+.editorial-caption p { margin: 0; font-size: 15px; text-decoration: underline; text-underline-offset: 4px; }
+.dark-caption .editorial-caption {
+  top: 50%;
+  bottom: auto;
+  background: var(--blue);
+  color: #fff;
+  transform: translateY(-50%);
+}
+.caption-bottom .editorial-caption { right: 28px; left: auto; background: var(--lime); color: #000; text-align: right; }
+
+.editorial-split { display: grid; grid-template-columns: 1fr 1fr; height: clamp(520px, 50vw, 680px); }
+.split-image { min-width: 0; overflow: hidden; background: #eee; }
+.split-image img { height: 100%; object-fit: cover; object-position: center; transition: transform .5s ease; }
+.split-image:hover img { transform: scale(1.015); }
+.split-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; min-width: 0; padding: 34px 32px; }
+.split-copy h2 { margin: auto 0; font-size: clamp(40px, 5vw, 76px); line-height: .93; letter-spacing: 0; text-transform: uppercase; }
+.split-copy &gt; a { font-size: 15px; text-decoration: underline; text-underline-offset: 4px; }
+.blue-panel { background: var(--blue); color: #fff; }
+.lime-panel { background: var(--lime); color: #000; }
+
+.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #000; }
+.feature-card { display: grid; grid-template-rows: minmax(0, 1fr) 118px; min-width: 0; min-height: 640px; overflow: hidden; background: #fff; }
+.feature-card img { width: 100%; height: 100%; min-height: 0; object-fit: cover; transition: transform .5s ease; }
+.feature-card div { position: relative; z-index: 1; padding: 16px; background: #fff; color: #000; }
+.feature-card h2 { margin: 8px 0 0; font-size: clamp(19px, 2vw, 29px); line-height: 1; text-transform: uppercase; }
+
+main h1,
+main h2,
+main .figma-triptych__content strong,
+main .figma-button,
+main .lead-story__content &gt; span,
+main .editorial-caption p,
+main .split-copy &gt; a { font-family: &quot;Druk Wide&quot;, Arial, sans-serif; }
+.external-arrow { font-family: &quot;Pretendard&quot;, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans KR&quot;, sans-serif; }
+
+.side-menu { position: fixed; z-index: 60; inset: 0 auto 0 0; width: min(357px, 100vw); background: #fff; color: #000; font-family: &quot;Pretendard&quot;, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans KR&quot;, sans-serif; transform: translateX(-102%); transition: transform .3s ease; overflow: hidden; }
+.side-menu.is-open { transform: translateX(0); }
+.menu-close { position: absolute; top: 38px; left: 30px; width: 24px; height: 24px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.menu-close img { width: 24px; height: 24px; }
+.brand-tabs { position: absolute; top: 96px; left: 30px; display: flex; gap: 24px; }
+.brand-tab { display: grid; width: 80px; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; justify-items: center; gap: 6px; text-align: center; cursor: pointer; }
+.brand-tab &gt; span { position: relative; display: grid; width: 72px; height: 72px; place-items: center; border-radius: 50%; }
+.brand-tab &gt; span::before { position: absolute; inset: 4px; content: &quot;&quot;; border: 1px solid #f1f3f5; border-radius: 50%; }
+.brand-tab.is-active &gt; span { border: 1px solid #000; }
+.brand-tab.is-active &gt; span::before { inset: 3px; border: 0; }
+.brand-tab[data-brand=&quot;market&quot;].is-active &gt; span::before { background: var(--blue); }
+.brand-tab[data-brand=&quot;yay&quot;].is-active &gt; span::before { background: #1d1d1b; }
+.brand-tab .brand-logo { position: relative; z-index: 1; width: 56px; object-fit: contain; }
+.brand-tab[data-brand=&quot;market&quot;] .brand-logo { height: 24px; }
+.brand-tab[data-brand=&quot;yay&quot;] .brand-logo { height: 14px; }
+.brand-tab .logo-active { display: none; }
+.brand-tab.is-active .logo-active { display: block; }
+.brand-tab.is-active .logo-inactive { display: none; }
+.brand-tab strong { min-height: 24px; font-size: 10px; font-weight: 500; line-height: 12px; white-space: nowrap; }
+.category-menu { position: absolute; top: 230px; left: 30px; display: grid; grid-template-columns: 136px 136px; gap: 25px; font-family: &quot;Druk Wide&quot;, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; }
+.category-menu &gt; div { display: flex; flex-direction: column; gap: 12px; }
+.category-menu a { white-space: nowrap; }
+.menu-links { position: absolute; top: 422px; left: 30px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; font-family: &quot;Druk Wide&quot;, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; }
+.menu-links a { white-space: nowrap; }
+.menu-links a:hover, .menu-links a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.nice-planet-button { display: none; }
+.menu-bottom { position: absolute; right: 0; bottom: 0; left: 0; height: 40px; display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; border-top: 1px solid #dee2e6; font-size: 12px; font-weight: 400; line-height: 16px; text-align: center; }
+.menu-bottom a { white-space: nowrap; }
+.scrim { position: fixed; z-index: 55; inset: 0; background: rgba(0,0,0,.6); }
+.search-panel { position: fixed; z-index: 44; top: 96px; right: 0; left: 0; display: grid; gap: 12px; padding: 32px; background: #fff; color: var(--blue); transform: translateY(-110%); transition: transform .25s ease; }
+.search-panel.is-open { transform: translateY(0); }
+.search-panel label { font-size: 12px; }
+.search-row { display: grid; grid-template-columns: 1fr 70px; border-bottom: 2px solid var(--blue); }
+.search-row input { min-width: 0; padding: 10px 0; border: 0; outline: 0; color: var(--blue); font-family: &quot;Pretendard&quot;, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans KR&quot;, sans-serif; font-size: 28px; }
+.search-row input::placeholder { font-family: &quot;Pretendard&quot;, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans KR&quot;, sans-serif; }
+.search-submit { border: 0; background: var(--blue); color: #fff; cursor: pointer; }
+
+.site-footer { display: grid; grid-template-columns: minmax(0, 2fr) 1fr auto; gap: 40px; min-height: 224px; padding: 39px 22px 40px; border-top: 1px solid #dee2e6; font-size: 12px; line-height: 16px; }
+.company-info { min-width: 0; font-family: &quot;Pretendard&quot;, &quot;Apple SD Gothic Neo&quot;, &quot;Noto Sans KR&quot;, sans-serif; color: #495057; }
+.company-info p { margin: 0; }
+.company-primary { display: grid; gap: 6px; font-size: 13px; white-space: nowrap; }
+.company-primary__row { display: flex; align-items: center; gap: 24px; }
+.company-primary__row p { color: #000; }
+.company-primary__row span { margin-right: 4px; color: #495057; }
+.company-primary__row a { color: #000; text-decoration: underline; text-underline-offset: 2px; }
+.company-secondary { display: grid; gap: 6px; margin-top: 30px; font-size: 12px; }
+.copyright-contact { display: flex; align-items: center; white-space: nowrap; }
+.copyright-contact &gt; * { margin: 0; }
+.copyright-contact &gt; * + * { display: inline-flex; align-items: center; }
+.copyright-contact &gt; * + *::before { width: 1px; height: 12px; margin: 0 9px; background: #adb5bd; content: &quot;&quot;; }
+.escrow-notice { white-space: nowrap; }
+.escrow-notice a, .footer-legal a { text-decoration: underline; text-underline-offset: 2px; }
+.footer-legal { display: flex; gap: 24px; }
+.footer-links { display: grid; grid-template-columns: 1fr 1fr; align-content: start; gap: 22px 50px; font-weight: 700; }
+.footer-socials { display: flex; width: 120px; align-items: flex-start; justify-content: space-between; }
+.footer-socials a, .footer-socials img { display: block; width: 24px; height: 24px; }
+
+@media (max-width: 800px) {
+  .site-header { height: 56px; }
+  .wordmark { left: 50%; width: 180px; height: 18px; }
+  .wordmark img { width: 180px; height: 18px; }
+  .header-tools { top: 16px; right: 15px; }
+  .header-tools .search-toggle, .account-button, .weather-orbit { display: none; }
+  .cart-toggle { width: 24px; height: 24px; padding: 0; }
+  .menu-toggle { top: 16px; left: 15px; width: 24px; height: 24px; padding: 0; }
+  .search-panel { top: 56px; }
+  .lead-story { height: max(520px, calc(100svh - 56px)); max-height: 720px; }
+  .lead-story &gt; img { object-position: 53% center; }
+  .lead-story__content { right: 16px; bottom: 16px; left: 16px; max-width: none; padding: 15px 16px 14px; }
+  .lead-story__content h1 { margin-bottom: 14px; font-size: clamp(30px, 8.5vw, 42px); line-height: 1.12; }
+  .lead-story__content h1 span { display: block; }
+  .figma-dual { grid-template-columns: 1fr; height: auto; }
+  .figma-story-image { aspect-ratio: 4 / 5; height: auto; }
+  .figma-story-copy { min-height: 300px; gap: 28px; padding: 28px 18px; }
+  .figma-story-copy h2 { font-size: clamp(30px, 8.5vw, 40px); line-height: 1.12; }
+  .figma-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .figma-product-card { grid-template-rows: auto 124px; height: auto; }
+  .figma-product-card &gt; a, .figma-product-media { aspect-ratio: 4 / 5; }
+  .figma-product-info { min-height: 124px; padding: 10px 9px 11px; }
+  .figma-product-info h2 { font-size: clamp(13px, 3.8vw, 18px); }
+  .figma-product-info .figma-button { font-size: 10px; }
+  .figma-triptych { height: 126vw; min-height: 500px; max-height: 720px; }
+  .figma-triptych__content { right: 16px; bottom: 16px; left: 16px; max-width: none; gap: 12px; padding: 14px 15px 13px; }
+  .figma-triptych__content strong { font-size: clamp(30px, 8.5vw, 40px); }
+  .feature-index { grid-template-columns: repeat(2, 1fr); gap: 4px; padding: 4px 3px 12px; }
+  .index-card { gap: 8px; }
+  .index-card h2 { min-height: 34px; padding: 0 6px; font-size: 14px; }
+  .editorial-hero { height: 112vw; min-height: 520px; max-height: 760px; }
+  .editorial-caption { right: auto; bottom: 16px; left: 16px; max-width: calc(100% - 32px); padding: 14px 15px 13px; }
+  .editorial-caption h2 { font-size: clamp(34px, 10vw, 52px); }
+  .dark-caption .editorial-caption { top: auto; bottom: 16px; transform: none; }
+  .caption-bottom .editorial-caption { right: 16px; left: auto; }
+  .caption-bottom .editorial-caption h2 { font-size: clamp(30px, 8.5vw, 44px); }
+  .editorial-split { grid-template-columns: 1fr; height: auto; }
+  .split-image { aspect-ratio: 4 / 5; }
+  .split-copy { min-height: 340px; padding: 24px 18px; }
+  .split-copy h2 { font-size: clamp(40px, 11vw, 64px); }
+  .editorial-split.is-reversed .split-image { order: 1; }
+  .editorial-split.is-reversed .split-copy { order: 2; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .feature-card { min-height: 660px; grid-template-rows: minmax(0, 1fr) 108px; }
+  .feature-card h2 { font-size: 24px; }
+  .site-footer { grid-template-columns: 1fr; gap: 28px; padding: 30px 20px 44px; }
+  .company-primary { white-space: normal; }
+  .company-primary__row, .copyright-contact { flex-wrap: wrap; gap: 4px 16px; }
+  .company-secondary { margin-top: 24px; }
+  .copyright-contact &gt; * + *::before { display: none; }
+  .escrow-notice { max-width: 680px; white-space: normal; }
+  .footer-links { max-width: 280px; }
+}
+
+@media (max-width: 430px) {
+  .editorial-hero { height: 126vw; min-height: 500px; }
+  .editorial-caption h2 { font-size: 42px; }
+  .dark-caption .editorial-caption h2 { font-size: 40px; }
+  .split-copy { min-height: 300px; }
+  .split-copy h2 { font-size: 40px; }
+  .feature-card { min-height: 590px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
+&lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header class=&quot;site-header&quot;&gt;
+      &lt;button class=&quot;icon-button menu-toggle&quot; type=&quot;button&quot; aria-label=&quot;메뉴 열기&quot; aria-expanded=&quot;false&quot;&gt;
+        &lt;picture&gt;
+          &lt;source media=&quot;(max-width: 800px)&quot; srcset=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-mobile-menu.svg&quot; /&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-menu.svg&quot; alt=&quot;&quot; /&gt;
+        &lt;/picture&gt;
+      &lt;/button&gt;
+      &lt;a class=&quot;wordmark&quot; href=&quot;#top&quot; aria-label=&quot;Nice Weather 홈&quot;&gt;
+        &lt;picture&gt;
+          &lt;source media=&quot;(max-width: 800px)&quot; srcset=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-mobile-logo.svg&quot; /&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-logo.svg&quot; alt=&quot;NICE WEATHER&quot; /&gt;
+        &lt;/picture&gt;
+      &lt;/a&gt;
+      &lt;div class=&quot;header-tools&quot;&gt;
+        &lt;button class=&quot;icon-button search-toggle&quot; type=&quot;button&quot; aria-label=&quot;검색 열기&quot;&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-search.svg&quot; alt=&quot;&quot; /&gt;
+        &lt;/button&gt;
+        &lt;button class=&quot;icon-button account-button&quot; type=&quot;button&quot; aria-label=&quot;마이페이지&quot;&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-user.svg&quot; alt=&quot;&quot; /&gt;
+        &lt;/button&gt;
+        &lt;button class=&quot;icon-button cart-toggle&quot; type=&quot;button&quot; aria-label=&quot;장바구니 열기&quot;&gt;
+          &lt;picture&gt;
+            &lt;source media=&quot;(max-width: 800px)&quot; srcset=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-mobile-bag.svg&quot; /&gt;
+            &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-bag.svg&quot; alt=&quot;&quot; /&gt;
+          &lt;/picture&gt;
+        &lt;/button&gt;
+        &lt;a class=&quot;weather-orbit&quot; href=&quot;#stories&quot; aria-label=&quot;Discover Nice Weather&quot;&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-planet.gif&quot; alt=&quot;&quot; /&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;aside class=&quot;side-menu&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;button class=&quot;menu-close&quot; type=&quot;button&quot; aria-label=&quot;메뉴 닫기&quot;&gt;
+        &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-close.svg&quot; alt=&quot;&quot; /&gt;
+      &lt;/button&gt;
+      &lt;div class=&quot;brand-tabs&quot; role=&quot;tablist&quot; aria-label=&quot;브랜드 전환&quot;&gt;
+        &lt;button class=&quot;brand-tab is-active&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot; data-brand=&quot;market&quot;&gt;
+          &lt;span&gt;
+            &lt;img class=&quot;brand-logo logo-active&quot; src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-market-logo.svg&quot; alt=&quot;&quot; /&gt;
+            &lt;img class=&quot;brand-logo logo-inactive&quot; src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-market-logo-inactive.svg&quot; alt=&quot;&quot; /&gt;
+          &lt;/span&gt;
+          &lt;strong&gt;NICE WEATHER&lt;br /&gt;MARKET&lt;/strong&gt;
+        &lt;/button&gt;
+        &lt;button class=&quot;brand-tab&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot; data-brand=&quot;yay&quot;&gt;
+          &lt;span&gt;
+            &lt;img class=&quot;brand-logo logo-active&quot; src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-yay-logo-active.svg&quot; alt=&quot;&quot; /&gt;
+            &lt;img class=&quot;brand-logo logo-inactive&quot; src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-yay-logo.svg&quot; alt=&quot;&quot; /&gt;
+          &lt;/span&gt;
+          &lt;strong&gt;Yin and Yang&lt;/strong&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;nav class=&quot;category-menu&quot; aria-label=&quot;카테고리 메뉴&quot; aria-live=&quot;polite&quot;&gt;
+        &lt;div&gt;
+          &lt;a href=&quot;#new&quot;&gt;What’s new&lt;/a&gt;
+          &lt;a href=&quot;#products&quot;&gt;Fashion&lt;/a&gt;
+          &lt;a href=&quot;#stories&quot;&gt;Food&lt;/a&gt;
+          &lt;a href=&quot;#stories&quot;&gt;Life&lt;/a&gt;
+          &lt;a href=&quot;#stories&quot;&gt;Culture&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;a href=&quot;#products&quot;&gt;Outdoor&lt;/a&gt;
+          &lt;a href=&quot;#products&quot;&gt;Vegan&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/nav&gt;
+      &lt;nav class=&quot;menu-links&quot; aria-label=&quot;콘텐츠 메뉴&quot;&gt;
+        &lt;a href=&quot;#stories&quot;&gt;Discover&lt;/a&gt;
+        &lt;a href=&quot;#footer&quot;&gt;Brand&lt;/a&gt;
+      &lt;/nav&gt;
+      &lt;a class=&quot;nice-planet-button&quot; href=&quot;#stories&quot;&gt;&lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/nav-nice-planet.gif&quot; alt=&quot;Nice Planet&quot; /&gt;&lt;/a&gt;
+      &lt;nav class=&quot;menu-bottom&quot; aria-label=&quot;고객지원 메뉴&quot;&gt;
+        &lt;a href=&quot;#footer&quot;&gt;회사소개&lt;/a&gt;
+        &lt;a href=&quot;#footer&quot;&gt;공지사항&lt;/a&gt;
+        &lt;a href=&quot;#footer&quot;&gt;자주 묻는 질문&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/aside&gt;
+    &lt;div class=&quot;scrim&quot; hidden&gt;&lt;/div&gt;
+
+    &lt;div class=&quot;search-panel&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;label for=&quot;site-search&quot;&gt;Search&lt;/label&gt;
+      &lt;div class=&quot;search-row&quot;&gt;
+        &lt;input id=&quot;site-search&quot; type=&quot;search&quot; placeholder=&quot;무엇을 찾고 있나요?&quot; /&gt;
+        &lt;button class=&quot;search-submit&quot; type=&quot;button&quot;&gt;Go&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;main id=&quot;top&quot;&gt;
+      &lt;a class=&quot;lead-story&quot;&gt;
+        &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-lead-story.png&quot; alt=&quot;차량 옆에서 흰 티셔츠를 입고 있는 인물&quot; /&gt;
+        &lt;div class=&quot;lead-story__content&quot;&gt;
+          &lt;h1&gt;CAN UNDERWEAR AND SOCKS &lt;span&gt;BE SUSTAINABLE?&lt;/span&gt;&lt;/h1&gt;
+          &lt;span&gt;View more&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+
+      &lt;div class=&quot;figma-home-content&quot;&gt;
+        &lt;section class=&quot;figma-dual&quot;&gt;
+          &lt;div class=&quot;figma-story-copy is-black&quot;&gt;
+            &lt;h2&gt;COSMOS STUDIO&lt;br /&gt;PANCAKE PURE&lt;br /&gt;WHITE&lt;/h2&gt;
+            &lt;a class=&quot;figma-button is-lime&quot;&gt;View more&lt;/a&gt;
+          &lt;/div&gt;
+          &lt;a class=&quot;figma-story-image&quot;&gt;
+            &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-cosmos.png&quot; alt=&quot;Cosmos Studio Pancake Pure White 조명&quot; /&gt;
+          &lt;/a&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;figma-dual&quot;&gt;
+          &lt;a class=&quot;figma-story-image&quot;&gt;
+            &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-camera.png&quot; alt=&quot;Nice Weather x Life 일회용 필름 카메라&quot; /&gt;
+          &lt;/a&gt;
+          &lt;div class=&quot;figma-story-copy is-lime&quot;&gt;
+            &lt;h2&gt;NICE WEATHER × LIFE&lt;br /&gt;SINGLE USE FILM&lt;br /&gt;CAMERA 27&lt;/h2&gt;
+            &lt;a class=&quot;figma-button is-black&quot;&gt;View more&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;figma-product-grid&quot; aria-label=&quot;Nice Weather products&quot;&gt;
+          &lt;a class=&quot;figma-product-card fad-product-link&quot; href=&quot;https://mi-hee-lee.github.io/nw-prototype/product.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+            &lt;span class=&quot;figma-product-media&quot;&gt;&lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-cap.png&quot; alt=&quot;FAD 로고 볼캡&quot; /&gt;&lt;/span&gt;
+            &lt;div class=&quot;figma-product-info is-blue&quot;&gt;
+              &lt;h2&gt;FAD&lt;br /&gt;LOGO BALL CAP&lt;/h2&gt;
+              &lt;span class=&quot;figma-button is-outline-light&quot;&gt;Check out&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/a&gt;
+          &lt;article class=&quot;figma-product-card&quot;&gt;
+            &lt;a&gt;&lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-nalgene.png&quot; alt=&quot;Nice Weather Nalgene Bottle 1L&quot; /&gt;&lt;/a&gt;
+            &lt;div class=&quot;figma-product-info is-blue&quot;&gt;
+              &lt;h2&gt;NICE WEATHER&lt;br /&gt;NALGENE BOTTLE&lt;br /&gt;1L&lt;/h2&gt;
+              &lt;a class=&quot;figma-button is-outline-light&quot;&gt;Check out&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+          &lt;article class=&quot;figma-product-card&quot;&gt;
+            &lt;a&gt;&lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-organic-towel.png&quot; alt=&quot;Nice Weather Organic Towel&quot; /&gt;&lt;/a&gt;
+            &lt;div class=&quot;figma-product-info is-white&quot;&gt;
+              &lt;h2&gt;NICE WEATHER&lt;br /&gt;ORGANIC TOWEL&lt;/h2&gt;
+              &lt;a class=&quot;figma-button is-outline-blue&quot;&gt;View more&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+          &lt;article class=&quot;figma-product-card&quot;&gt;
+            &lt;a&gt;&lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-thermometer.png&quot; alt=&quot;Nice Weather Thermometer Keyring&quot; /&gt;&lt;/a&gt;
+            &lt;div class=&quot;figma-product-info is-white&quot;&gt;
+              &lt;h2&gt;NICE WEATHER&lt;br /&gt;THERMOMETER&lt;br /&gt;KEYRING&lt;/h2&gt;
+              &lt;a class=&quot;figma-button is-outline-blue&quot;&gt;View more&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+        &lt;/section&gt;
+
+        &lt;a class=&quot;figma-triptych&quot;&gt;
+          &lt;span class=&quot;figma-triptych__images&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-blue-look.png&quot; alt=&quot;&quot; /&gt;
+            &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-blue-look.png&quot; alt=&quot;&quot; /&gt;
+            &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-blue-look.png&quot; alt=&quot;&quot; /&gt;
+          &lt;/span&gt;
+          &lt;span class=&quot;figma-triptych__content&quot;&gt;
+            &lt;strong&gt;A PERFECT MOMENT IN AN IMPERFECT WORLD&lt;/strong&gt;
+            &lt;span class=&quot;figma-button is-outline-lime&quot;&gt;View more&lt;/span&gt;
+          &lt;/span&gt;
+        &lt;/a&gt;
+
+        &lt;section class=&quot;figma-dual&quot;&gt;
+          &lt;div class=&quot;figma-story-copy is-black&quot;&gt;
+            &lt;h2&gt;INTO A WORLD OF&lt;br /&gt;FLUID, SENSUAL LINES&lt;/h2&gt;
+            &lt;a class=&quot;figma-button is-lime&quot;&gt;View more&lt;/a&gt;
+          &lt;/div&gt;
+          &lt;a class=&quot;figma-story-image&quot;&gt;
+            &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-sensual-lines.png&quot; alt=&quot;검은 재킷을 입은 인물&quot; /&gt;
+          &lt;/a&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;figma-dual&quot;&gt;
+          &lt;a class=&quot;figma-story-image&quot;&gt;
+            &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-golden-travel.png&quot; alt=&quot;Toiletpaper 매거진 비주얼&quot; /&gt;
+          &lt;/a&gt;
+          &lt;div class=&quot;figma-story-copy is-lime&quot;&gt;
+            &lt;h2&gt;CAPTURING THE GOLDEN AGE&lt;br /&gt;OF GLAMOROUS TRAVEL&lt;/h2&gt;
+            &lt;a class=&quot;figma-button is-black&quot;&gt;View more&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;figma-product-grid&quot; aria-label=&quot;More Nice Weather stories&quot;&gt;
+          &lt;article class=&quot;figma-product-card&quot;&gt;
+            &lt;a&gt;&lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-stripe-towel.png&quot; alt=&quot;Nice Weather Apparel Stripe Towel&quot; /&gt;&lt;/a&gt;
+            &lt;div class=&quot;figma-product-info is-blue&quot;&gt;
+              &lt;h2&gt;NICE WEATHER&lt;br /&gt;APPAREL&lt;br /&gt;STRIPE TOWEL&lt;/h2&gt;
+              &lt;a class=&quot;figma-button is-outline-light&quot;&gt;Check out&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+          &lt;article class=&quot;figma-product-card&quot;&gt;
+            &lt;a&gt;&lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-nalgene.png&quot; alt=&quot;Nice Weather Nalgene Bottle 1L&quot; /&gt;&lt;/a&gt;
+            &lt;div class=&quot;figma-product-info is-blue&quot;&gt;
+              &lt;h2&gt;NICE WEATHER&lt;br /&gt;NALGENE BOTTLE&lt;br /&gt;1L&lt;/h2&gt;
+              &lt;a class=&quot;figma-button is-outline-light&quot;&gt;Check out&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+          &lt;article class=&quot;figma-product-card&quot;&gt;
+            &lt;a&gt;&lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-sensual-lines-alt.png&quot; alt=&quot;하늘 위 Nice Weather 인센스&quot; /&gt;&lt;/a&gt;
+            &lt;div class=&quot;figma-product-info is-white&quot;&gt;
+              &lt;h2&gt;A WORLD OF FLUID,&lt;br /&gt;SENSUAL LINES&lt;/h2&gt;
+              &lt;a class=&quot;figma-button is-outline-blue&quot;&gt;View more&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+          &lt;article class=&quot;figma-product-card&quot;&gt;
+            &lt;a&gt;&lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/figma-golden-travel-alt.png&quot; alt=&quot;Cosmos Studio 조명&quot; /&gt;&lt;/a&gt;
+            &lt;div class=&quot;figma-product-info is-white&quot;&gt;
+              &lt;h2&gt;THE GOLDEN AGE&lt;br /&gt;OF GLAMOROUS TRAVEL&lt;/h2&gt;
+              &lt;a class=&quot;figma-button is-outline-blue&quot;&gt;View more&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+        &lt;/section&gt;
+      &lt;/div&gt;
+
+      &lt;section class=&quot;feature-index&quot; aria-label=&quot;Latest features&quot;&gt;
+        &lt;a class=&quot;index-card&quot;&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/feature-26.jpg&quot; alt=&quot;Visit: Rocka Doodle&quot; /&gt;
+          &lt;h2&gt;Visit: Rocka Doodle&lt;/h2&gt;
+        &lt;/a&gt;
+        &lt;a class=&quot;index-card&quot;&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/feature-25.jpg&quot; alt=&quot;Visit: Parkmoonchi&quot; /&gt;
+          &lt;h2&gt;Visit: Parkmoonchi&lt;/h2&gt;
+        &lt;/a&gt;
+        &lt;a class=&quot;index-card&quot;&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/feature-24.jpg&quot; alt=&quot;Visit: Good Morning Town&quot; /&gt;
+          &lt;h2&gt;Visit: Good Morning Town&lt;/h2&gt;
+        &lt;/a&gt;
+        &lt;a class=&quot;index-card&quot;&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/feature-23.jpg&quot; alt=&quot;Visit: Pohs-Tihs&quot; /&gt;
+          &lt;h2&gt;Visit: Pohs-Tihs&lt;/h2&gt;
+        &lt;/a&gt;
+      &lt;/section&gt;
+
+      &lt;a class=&quot;editorial-hero&quot;&gt;
+        &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/feature-22.jpg&quot; alt=&quot;Summer T-Shirts&quot; /&gt;
+        &lt;div class=&quot;editorial-caption&quot;&gt;
+          &lt;span&gt;FEATURE 22&lt;/span&gt;
+          &lt;h2&gt;SUMMER T-SHIRTS&lt;/h2&gt;
+          &lt;p&gt;View feature&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+
+      &lt;section class=&quot;editorial-split&quot;&gt;
+        &lt;a class=&quot;split-image&quot;&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/feature-21.jpg&quot; alt=&quot;Visit: Jaybe Lee&quot; /&gt;
+        &lt;/a&gt;
+        &lt;div class=&quot;split-copy blue-panel&quot;&gt;
+          &lt;span&gt;FEATURE 21&lt;/span&gt;
+          &lt;h2&gt;VISIT:&lt;br /&gt;JAYBE LEE&lt;/h2&gt;
+          &lt;a&gt;View feature &lt;span class=&quot;external-arrow&quot;&gt;↗&lt;/span&gt;&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;a class=&quot;editorial-hero dark-caption&quot;&gt;
+        &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/feature-20.jpg&quot; alt=&quot;MULEBOY x NICE WEATHER&quot; /&gt;
+        &lt;div class=&quot;editorial-caption&quot;&gt;
+          &lt;span&gt;FEATURE 20&lt;/span&gt;
+          &lt;h2&gt;MULEBOY&lt;br /&gt;× NICE WEATHER&lt;/h2&gt;
+          &lt;p&gt;View feature&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+
+      &lt;section class=&quot;editorial-split is-reversed&quot;&gt;
+        &lt;div class=&quot;split-copy lime-panel&quot;&gt;
+          &lt;span&gt;FEATURE 19&lt;/span&gt;
+          &lt;h2&gt;HANWHA EAGLES&lt;br /&gt;× NICE WEATHER&lt;/h2&gt;
+          &lt;a&gt;View feature &lt;span class=&quot;external-arrow&quot;&gt;↗&lt;/span&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;a class=&quot;split-image&quot;&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/feature-19.jpg&quot; alt=&quot;HANWHA EAGLES x NICE WEATHER&quot; /&gt;
+        &lt;/a&gt;
+      &lt;/section&gt;
+
+      &lt;a class=&quot;editorial-hero caption-bottom&quot;&gt;
+        &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/feature-18.jpg&quot; alt=&quot;SHOP FAST REMEMBER SLOW&quot; /&gt;
+        &lt;div class=&quot;editorial-caption&quot;&gt;
+          &lt;span&gt;FEATURE 18&lt;/span&gt;
+          &lt;h2&gt;SHOP FAST&lt;br /&gt;REMEMBER SLOW&lt;/h2&gt;
+          &lt;p&gt;View feature&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+
+      &lt;section class=&quot;feature-grid&quot; aria-label=&quot;More features&quot;&gt;
+        &lt;a class=&quot;feature-card&quot;&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/feature-17.jpg&quot; alt=&quot;WARMTH, WORN AND CARRIED&quot; /&gt;
+          &lt;div&gt;&lt;span&gt;FEATURE 17&lt;/span&gt;&lt;h2&gt;WARMTH, WORN AND CARRIED&lt;/h2&gt;&lt;/div&gt;
+        &lt;/a&gt;
+        &lt;a class=&quot;feature-card&quot;&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/feature-16.jpg&quot; alt=&quot;FLEECE SMALL BAG&quot; /&gt;
+          &lt;div&gt;&lt;span&gt;FEATURE 16&lt;/span&gt;&lt;h2&gt;FLEECE SMALL BAG&lt;/h2&gt;&lt;/div&gt;
+        &lt;/a&gt;
+        &lt;a class=&quot;feature-card&quot;&gt;
+          &lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/feature-15.jpg&quot; alt=&quot;BASEBALL LOGO CAP&quot; /&gt;
+          &lt;div&gt;&lt;span&gt;FEATURE 15&lt;/span&gt;&lt;h2&gt;BASEBALL LOGO CAP&lt;/h2&gt;&lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;footer class=&quot;site-footer&quot; id=&quot;footer&quot;&gt;
+      &lt;div class=&quot;company-info&quot;&gt;
+        &lt;div class=&quot;company-primary&quot;&gt;
+          &lt;div class=&quot;company-primary__row&quot;&gt;
+            &lt;p&gt;&lt;span&gt;회사&lt;/span&gt; 주식회사 나이스웨더&lt;/p&gt;
+            &lt;p&gt;&lt;span&gt;대표&lt;/span&gt; 노승훈&lt;/p&gt;
+            &lt;p&gt;&lt;span&gt;본사&lt;/span&gt; 서울 강남구 강남대로160길 35-5, 1층&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;company-primary__row&quot;&gt;
+            &lt;p&gt;&lt;span&gt;통신판매업&lt;/span&gt; 제2020-서울강남-03642호&lt;/p&gt;
+            &lt;p&gt;&lt;span&gt;사업자번호&lt;/span&gt; &lt;a href=&quot;#&quot;&gt;693-81-02003&lt;/a&gt;&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;company-secondary&quot;&gt;
+          &lt;div class=&quot;copyright-contact&quot;&gt;
+            &lt;p&gt;Copyright ⓒ NICE WEATHER, All rights reserved.&lt;/p&gt;
+            &lt;a href=&quot;tel:025470073&quot;&gt;02-547-0073&lt;/a&gt;
+            &lt;a href=&quot;mailto:niceweather.seoul@gmail.com&quot;&gt;niceweather.seoul@gmail.com&lt;/a&gt;
+          &lt;/div&gt;
+          &lt;p class=&quot;escrow-notice&quot;&gt;고객님은 안전거래를 위해 현금 등으로 결제시 저희 쇼핑몰이 가입한 PG에스크로 구매안전서비스를 이용하실 수 있습니다. &lt;a href=&quot;#&quot;&gt;서비스 가입사실 확인&lt;/a&gt;&lt;/p&gt;
+          &lt;div class=&quot;footer-legal&quot;&gt;&lt;a href=&quot;#&quot;&gt;Terms of use&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Privacy policy&lt;/a&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;nav class=&quot;footer-links&quot; aria-label=&quot;푸터 메뉴&quot;&gt;
+        &lt;a href=&quot;#&quot;&gt;ABOUT US&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;NOTICE&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;STOCKIST&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;FAQ&lt;/a&gt;
+      &lt;/nav&gt;
+      &lt;nav class=&quot;footer-socials&quot; aria-label=&quot;소셜 채널&quot;&gt;
+        &lt;a href=&quot;#&quot; aria-label=&quot;Instagram&quot;&gt;&lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/footer-instagram.svg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+        &lt;a href=&quot;#&quot; aria-label=&quot;Kakao Channel&quot;&gt;&lt;img src=&quot;https://mi-hee-lee.github.io/nw-prototype/assets/footer-kakao-channel.svg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/footer&gt;
+
+    &lt;script&gt;const menuButton = document.querySelector(&quot;.menu-toggle&quot;);
+const menu = document.querySelector(&quot;.side-menu&quot;);
+const menuCloseButton = document.querySelector(&quot;.menu-close&quot;);
+const scrim = document.querySelector(&quot;.scrim&quot;);
+const searchButton = document.querySelector(&quot;.search-toggle&quot;);
+const searchPanel = document.querySelector(&quot;.search-panel&quot;);
+const cartButton = document.querySelector(&quot;.cart-toggle&quot;);
+const brandTabs = document.querySelectorAll(&quot;.brand-tab&quot;);
+const categoryMenu = document.querySelector(&quot;.category-menu&quot;);
+const pageAnchorPrefix = document.body.classList.contains(&quot;product-body&quot;) ? &quot;index.html&quot; : &quot;&quot;;
+
+const brandCategories = {
+  market: [
+    [
+      [&quot;What’s new&quot;, &quot;#new&quot;],
+      [&quot;Fashion&quot;, &quot;#products&quot;],
+      [&quot;Food&quot;, &quot;#stories&quot;],
+      [&quot;Life&quot;, &quot;#stories&quot;],
+      [&quot;Culture&quot;, &quot;#stories&quot;],
+    ],
+    [
+      [&quot;Outdoor&quot;, &quot;#products&quot;],
+      [&quot;Vegan&quot;, &quot;#products&quot;],
+    ],
+  ],
+  yay: [
+    [
+      [&quot;All&quot;, &quot;#products&quot;],
+      [&quot;New&quot;, &quot;#new&quot;],
+      [&quot;Outer&quot;, &quot;#products&quot;],
+      [&quot;Top&quot;, &quot;#products&quot;],
+      [&quot;Bottom&quot;, &quot;#products&quot;],
+    ],
+    [
+      [&quot;Inner&quot;, &quot;#products&quot;],
+      [&quot;Bag&quot;, &quot;#products&quot;],
+      [&quot;Shoes&quot;, &quot;#products&quot;],
+    ],
+  ],
+};
+
+function renderBrandCategories(brand) {
+  categoryMenu.replaceChildren(
+    ...brandCategories[brand].map((column) =&gt; {
+      const group = document.createElement(&quot;div&quot;);
+      column.forEach(([label, href]) =&gt; {
+        const link = document.createElement(&quot;a&quot;);
+        link.href = `${pageAnchorPrefix}${href}`;
+        link.textContent = label;
+        link.addEventListener(&quot;click&quot;, closePanels);
+        group.append(link);
+      });
+      return group;
+    }),
+  );
+}
+
+brandTabs.forEach((tab) =&gt; {
+  tab.addEventListener(&quot;click&quot;, () =&gt; {
+    brandTabs.forEach((item) =&gt; {
+      const isSelected = item === tab;
+      item.classList.toggle(&quot;is-active&quot;, isSelected);
+      item.setAttribute(&quot;aria-selected&quot;, String(isSelected));
+    });
+    renderBrandCategories(tab.dataset.brand);
+  });
+});
+
+function closePanels() {
+  menu.classList.remove(&quot;is-open&quot;);
+  searchPanel.classList.remove(&quot;is-open&quot;);
+  menuButton.classList.remove(&quot;is-open&quot;);
+  menuButton.setAttribute(&quot;aria-expanded&quot;, &quot;false&quot;);
+  menu.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;);
+  searchPanel.setAttribute(&quot;aria-hidden&quot;, &quot;true&quot;);
+  scrim.hidden = true;
+}
+
+menuButton.addEventListener(&quot;click&quot;, () =&gt; {
+  const willOpen = !menu.classList.contains(&quot;is-open&quot;);
+  closePanels();
+  if (willOpen) {
+    menu.classList.add(&quot;is-open&quot;);
+    menuButton.classList.add(&quot;is-open&quot;);
+    menuButton.setAttribute(&quot;aria-expanded&quot;, &quot;true&quot;);
+    menu.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;);
+    scrim.hidden = false;
+  }
+});
+
+searchButton.addEventListener(&quot;click&quot;, () =&gt; {
+  const willOpen = !searchPanel.classList.contains(&quot;is-open&quot;);
+  closePanels();
+  if (willOpen) {
+    searchPanel.classList.add(&quot;is-open&quot;);
+    searchPanel.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;);
+    document.querySelector(&quot;#site-search&quot;).focus();
+  }
+});
+
+cartButton.addEventListener(&quot;click&quot;, () =&gt; {
+  closePanels();
+  cartButton.animate(
+    [{ transform: &quot;translateY(0)&quot; }, { transform: &quot;translateY(-4px)&quot; }, { transform: &quot;translateY(0)&quot; }],
+    { duration: 280 },
+  );
+});
+
+scrim.addEventListener(&quot;click&quot;, closePanels);
+menuCloseButton.addEventListener(&quot;click&quot;, closePanels);
+document.addEventListener(&quot;keydown&quot;, (event) =&gt; {
+  if (event.key === &quot;Escape&quot;) closePanels();
+});
+document.querySelectorAll(&quot;.side-menu a&quot;).forEach((link) =&gt; link.addEventListener(&quot;click&quot;, closePanels));
+&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+" title="Nice Weather Home · 데스크탑 스크롤 반복" loading="eager"></iframe></div></div></div><script>
+const stage=document.getElementById('stage');
+function fit(){stage.style.transform=`translate(-50%,-50%) scale(${Math.min(innerWidth/1920,innerHeight/1095)})`}
+addEventListener('resize',fit);fit();
+const frame=document.getElementById('home-frame'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
+const timing={topHold:2000,bottomHold:1800,downSpeed:216,upSpeed:840,manualHold:6000};
+let resolveReady;const readyPromise=new Promise(resolve=>{resolveReady=resolve});
+let win,doc,root,raf=0,last=0,maxScroll=0,phase='top',elapsed=0,duration=timing.topHold,from=0,to=0,pausedUntil=0,rebase=false,ready=false;
+function ease(p){return (1-Math.cos(Math.PI*Math.max(0,Math.min(1,p))))/2}
+function measure(){maxScroll=Math.max(0,root.scrollHeight-frame.clientHeight)}
+function scroll(value){root.scrollTop=value}
+function begin(next){phase=next;elapsed=0;from=root.scrollTop;to=next==='down'?maxScroll:next==='up'?0:from;duration=next==='top'?timing.topHold:next==='bottom'?timing.bottomHold:next==='down'?Math.max(1000,Math.abs(to-from)/timing.downSpeed*1000):Math.max(1000,Math.abs(to-from)/timing.upSpeed*1000)}
+function nextPhase(){begin(phase==='top'?'down':phase==='down'?'bottom':phase==='bottom'?'up':'top')}
+function takeControl(){pausedUntil=performance.now()+timing.manualHold;rebase=true}
+function animate(now){const dt=Math.min(100,Math.max(0,now-last));last=now;if(ready&&!reduced.matches&&!document.hidden){const panelOpen=doc.querySelector('.side-menu.is-open,.search-panel.is-open');if(panelOpen){pausedUntil=now+timing.manualHold;rebase=true}else if(now>=pausedUntil){if(rebase){measure();begin(root.scrollTop>=maxScroll-1?'bottom':'down');rebase=false}elapsed+=dt;while(elapsed>=duration){scroll(to);const extra=elapsed-duration;nextPhase();elapsed=extra}if(phase==='down'||phase==='up')scroll(from+(to-from)*ease(elapsed/duration))}}raf=requestAnimationFrame(animate)}
+async function connect(){cancelAnimationFrame(raf);ready=false;try{win=frame.contentWindow;doc=win.document;root=doc.scrollingElement;if(!root)return;root.style.scrollBehavior='auto';doc.documentElement.style.scrollBehavior='auto';await Promise.all([...doc.images].map(img=>img.decode().catch(()=>{})));await doc.fonts.ready;measure();scroll(0);begin('top');pausedUntil=0;rebase=false;for(const name of ['wheel','pointerdown','touchstart'])win.addEventListener(name,takeControl,{passive:true});win.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key))takeControl()});ready=true;document.documentElement.dataset.ready='true';resolveReady(true);last=performance.now();raf=requestAnimationFrame(animate)}catch{document.documentElement.dataset.ready='unavailable';resolveReady(false)}}
+frame.addEventListener('load',connect);
+if(frame.contentDocument?.readyState==='complete'&&frame.contentDocument.querySelector('.site-header'))connect();
+addEventListener('resize',()=>{if(!ready)return;measure();rebase=true;pausedUntil=performance.now()+200});
+document.addEventListener('visibilitychange',()=>{last=performance.now()});
+reduced.addEventListener('change',()=>{rebase=true;last=performance.now()});
+window.homeLoop={ready:readyPromise,get viewportWidth(){return frame.clientWidth},get viewportHeight(){return frame.clientHeight},get maxScroll(){return maxScroll},get cycleDuration(){return timing.topHold+timing.bottomHold+Math.max(1000,maxScroll/timing.downSpeed*1000)+Math.max(1000,maxScroll/timing.upSpeed*1000)},get phase(){return phase}};
+
+</script></body></html>
