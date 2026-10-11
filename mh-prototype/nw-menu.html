@@ -106,7 +106,7 @@ async function connect() {
     root = doc.scrollingElement;
     root.style.scrollBehavior = 'auto';
     const menuStyle = doc.createElement('style');
-    menuStyle.textContent = '.menu-links{font-size:16px;line-height:24px}';
+    menuStyle.textContent = '.menu-links{font-size:16px;line-height:24px;flex-direction:column;align-items:flex-start;gap:12px}';
     doc.head.append(menuStyle);
     await Promise.all([...doc.images].map(img => img.decode().catch(() => {})));
     await doc.fonts.ready;
