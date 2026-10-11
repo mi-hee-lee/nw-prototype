@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><title>Nice Weather · Product Scroll Loop</title><style>
+@font-face{font-family:Montserrat;src:url(nw-product-scroll-assets/montserrat-semibold.ttf) format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:Montserrat;src:url(nw-product-scroll-assets/montserrat-regular.ttf) format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:Montserrat;src:url(nw-product-scroll-assets/montserrat-bold-italic.ttf) format('truetype');font-weight:700;font-style:italic;font-display:swap}
+@font-face{font-family:'Druk Wide';src:url(nw-product-scroll-assets/druk-bold.woff2) format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Prototype Korean';src:url(nw-product-scroll-assets/pretendard-regular.otf) format('opentype');font-weight:300 600;font-display:swap}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;overscroll-behavior:none;background:#f9fafb;color:#000}p{margin:0}img{display:block}button,a{font:inherit;color:inherit}button{padding:0;border:0;background:transparent;text-align:inherit}a{text-decoration:none}button:focus-visible,a:focus-visible{outline:2px solid #10069f;outline-offset:4px}
+#stage{position:absolute;left:50%;top:50%;width:2880px;height:1642.5px;transform-origin:center;background:#f9fafb}
+#phone{position:absolute;left:1122.75px;top:163.5px;width:634.5px;height:1315.5px}
+.hardware{position:absolute;background:#2c2c2e;border-radius:2.342px;width:7.806px}.switch{left:0;top:225px;height:49.956px}.volume-up{left:0;top:337.813px;height:96.789px}.volume-down{left:0;top:454.897px;height:96.789px}.power{left:625.5px;top:390px;height:149.867px}
+#phone-body{position:absolute;left:22.5px;top:18px;width:588px;height:1279.5px;border-radius:75px;overflow:hidden;background:#fff;box-shadow:0 0 0 18px #1c1c1e}
+#screen{position:absolute;left:-8.25px;top:.5px;width:604px;height:1294px;border-radius:48px;overflow:hidden;background:#fff}
+#scroll{position:absolute;inset:0 0 138px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;overscroll-behavior:contain;touch-action:pan-y;scroll-behavior:auto;outline:none}#scroll::-webkit-scrollbar{display:none}
+#content{position:relative;width:604px;height:3968.378px;background:#fff}
+.korean{font-family:'Apple SD Gothic Neo','Prototype Korean',sans-serif;font-weight:300}.montserrat{font-family:Montserrat,'Apple SD Gothic Neo','Prototype Korean',sans-serif;font-weight:600}.druk{font-family:'Druk Wide',sans-serif;font-weight:700}
+.brand-description{position:absolute;left:34.031px;top:936px;width:523.183px}
+.brand-description h1{margin:0;font-family:Montserrat,sans-serif;font-weight:600;font-size:37.088px;line-height:52.982px;white-space:nowrap}
+.brand-description .intro{position:absolute;top:63.578px;left:0;font-size:29.14px;line-height:42.386px;white-space:nowrap}
+.brand-description .description{position:absolute;top:180.14px;left:0;width:523.183px;font-size:23.842px;line-height:37.088px}
+.md-heading{position:absolute;left:34.031px;top:1325.42px;font-size:21.268px;line-height:34.028px}
+.md-copy{position:absolute;left:34.44px;top:1375.75px;width:521.877px;font-size:21.268px;line-height:34.028px}
+.carousel{position:absolute;left:0;top:284px;width:604px;height:604px;overflow:hidden}.carousel>img{width:604px;height:604px;object-fit:cover}
+.carousel-indicator{position:absolute;left:242px;bottom:34.028px;width:119.099px;height:53.169px;border-radius:34.028px;background:#0006;color:#fff;font:italic 700 20.133px/26.844px Montserrat,sans-serif}
+.carousel-indicator span{position:absolute;top:13.422px;width:26.844px;text-align:center;transform:translateX(-50%)}.carousel-indicator span:nth-child(1){left:42.5px}.carousel-indicator span:nth-child(2){left:60.4px}.carousel-indicator span:nth-child(3){left:78.29px}
+.product-info{position:absolute;left:25.523px;top:113.578px;width:552.958px;padding:36px 0;display:flex;flex-direction:column;gap:12px}
+.product-brand{font-size:23.489px;line-height:33.556px;height:34px;color:#868e96;white-space:nowrap}.product-name{font-size:35.793px;line-height:53.689px;height:54px;width:553.667px;white-space:nowrap}.product-price{font-size:30.2px;line-height:43.622px;height:44px}
+.navigation{position:absolute;z-index:3;left:12px;top:16px;width:580px;height:93.577px;background:#fff}
+.navigation-backdrop{position:absolute;z-index:2;left:0;top:0;width:604px;height:109.577px;background:#fff;pointer-events:none}
+#statusbar{position:absolute;z-index:5;left:0;top:0;width:604px;height:16px;background:#fff;pointer-events:none}
+.navigation .logo{position:absolute;left:139px;top:31.689px}.navigation .menu{position:absolute;left:25.167px;top:26.655px}.navigation .bag{position:absolute;right:25.167px;top:26.655px}
+.detail{position:absolute;top:1541px;left:0;width:604px;height:2427.378px;overflow:hidden;background:#fff}
+.detail-first{position:absolute;top:0;left:0;width:604px;height:604px;object-fit:cover}.detail-second{position:absolute;top:604px;left:0;width:604px;height:804px;object-fit:cover}
+.show-more{position:absolute;left:147.998px;top:1458px;width:307.178px;height:64.178px;border:2.367px solid #000;padding:10px 64px 10px 48px;display:flex;align-items:center;justify-content:center;gap:12.622px;white-space:nowrap;font-size:18px;line-height:18px}.show-more img{flex:none}
+.pairing{position:absolute;top:1586px;left:0;width:886px;height:670px;overflow:hidden;background:#fff}
+.pairing-heading{position:absolute;left:0;top:0;width:604px;height:107.378px;border-top:3.356px solid #000}
+.pairing-heading .label{position:absolute;left:25.167px;top:33.554px;font-size:23.489px;line-height:33.556px}
+.pairing-arrows{position:absolute;right:25.167px;top:30.194px;display:flex;align-items:flex-start;gap:13.422px;height:40.267px}
+.pairing-arrows p{font:italic 700 26.844px/40.267px Montserrat,sans-serif;letter-spacing:9.127px;white-space:nowrap}
+.pairing-cards{position:absolute;top:107.378px;left:0;display:flex;align-items:flex-start;gap:12px;padding:0 25.167px}
+.card{display:flex;flex-direction:column;align-items:flex-start;gap:20.133px;flex:none;width:266.767px}.card-media{position:relative;overflow:hidden;width:266.767px;height:355.689px}.card-media>img{width:266.767px;height:355.689px;object-fit:cover}.card-media.crop>img{position:absolute;top:-9.48%;object-fit:fill}.card-media.empty{background:#f8f9fa}
+.wishlist{position:absolute;right:6.711px;top:295.289px;width:53.689px;height:53.689px;border-radius:32px;display:grid;place-items:center}
+.card-text{display:flex;flex-direction:column;align-items:flex-start;gap:13.422px;width:266.767px}.card-names{display:flex;flex-direction:column;gap:6.711px;width:100%}.card-brand{display:flex;align-items:flex-start;white-space:nowrap;font:600 20.133px/26.844px 'Apple SD Gothic Neo','Prototype Korean',sans-serif;color:#495057}
+.card-title{width:266.767px;min-height:68px;font-size:23.489px;line-height:33.556px}.card-price{font-size:23.489px;line-height:33.556px;white-space:nowrap}.discount-row{display:flex;gap:6.711px;align-items:flex-start;white-space:nowrap}.original-price{padding:5.033px 0 1.678px;font:400 20.13px/26.844px Montserrat,sans-serif;text-decoration:line-through;opacity:.6}.discount{font-size:23.49px;line-height:33.556px;color:#10069f}
+.pairing-overlay{position:absolute;top:108px;left:312px;width:256px;height:356px;background:#f8f9fb;mix-blend-mode:multiply}.pairing-overlay .wishlist{right:5.94px}
+.size-info{position:absolute;left:0;top:2320px;width:604px;height:107.378px;border-top:3.356px solid #000}.size-info p{position:absolute;left:25.167px;top:33.554px;font-size:23.489px;line-height:33.556px}
+.purchase-bar{position:absolute;z-index:4;bottom:0;left:0;width:604px;height:138px;background:#fff;border-top:1.678px solid #dee2e6}
+.purchase-actions{display:flex;gap:25.167px;padding:18.456px 25.167px 26.844px;width:604px}.purchase-icon{width:67.111px;height:67.111px;border:1.678px solid #dee2e6;border-radius:6.711px;flex:none;display:grid;place-items:center;background:#fff}.buy-now{display:flex;flex:1;align-items:center;justify-content:center;height:67.111px;border-radius:6.711px;background:#10069f;color:#fff;font-size:16.778px;line-height:20.133px}
+</style></head><body><main id="stage" aria-label="Nice Weather 상품 상세 스크롤 반복"><div id="phone" data-node-id="2104:54590">
+<div class="hardware switch"></div><div class="hardware volume-up"></div><div class="hardware volume-down"></div><div class="hardware power"></div>
+<div id="phone-body" data-node-id="2104:54595"><div id="screen"><div id="scroll" tabindex="0" role="region" aria-label="상품 상세 콘텐츠"><div id="content" data-node-id="2104:54861">
+<section class="brand-description" data-node-id="2104:54862"><h1>Kompakt Record Bar</h1><p class="intro korean">레코드 문화와 로컬 씬에 대한 애정과<br>존중을 기반으로 하는 문화 공간</p><p class="description korean">레코드 문화와 로컬 씬에 대한 애정이 묻어나는 문화<br>공간으로서 아티스트들과의 활발한 협업을 통해 가치를<br>만들고, 콤팩트 레코드 바만의 감성을 담아낸 다양한<br>아이템을 선보이고 있습니다.</p></section>
+<p class="md-heading montserrat" data-node-id="2104:54864">MD's COMMENT</p><p class="md-copy korean" data-node-id="2104:54865">앞면에 콤팩트 레코드바의 로고를 큼지막하게 새긴 스틸<br>키링입니다. 뒷면엔 패턴으로 로고가 들어가 있어 반전 매력을 느낄 수 있죠.</p>
+<div class="carousel" data-node-id="2104:54868"><img src="nw-product-scroll-assets/50b36.png" alt="KRB Logo Steel Key Chain" data-asset-slot="carousel"><div class="carousel-indicator"><span>1</span><span>/</span><span>6</span></div></div>
+<section class="product-info montserrat" data-node-id="2104:54873"><p class="product-brand">Kompakt Record Bar</p><p class="product-name">KRB Logo Steel Key Chain</p><p class="product-price">₩ 17,000</p></section>
+<section class="detail" data-node-id="2104:54903"><img class="detail-first" src="nw-product-scroll-assets/32d42.png" alt="KRB 스틸 키링의 앞면과 뒷면" data-asset-slot="detail-first"><img class="detail-second" src="nw-product-scroll-assets/90567.png" alt="KRB 스틸 키링 디테일" data-asset-slot="detail-second">
+<div class="show-more druk" data-node-id="2104:54906"><img src="nw-product-scroll-assets/74ccb.svg" alt="" data-asset-slot="show-more-icon"><span>Show more</span></div>
+<section class="pairing" data-node-id="2104:54907"><header class="pairing-heading"><p class="label druk">Pairing Item</p><div class="pairing-arrows"><img src="nw-product-scroll-assets/f4507.svg" alt="" data-asset-slot="pairing-left"><p>1/2</p><img src="nw-product-scroll-assets/db9ce.svg" alt="" data-asset-slot="pairing-right"></div></header>
+<div class="pairing-cards">
+<article class="card" data-node-id="2104:54909"><div class="card-media"><img src="nw-product-scroll-assets/2181f.png" alt="Kompakt Record Bar 휴대폰 케이스" data-asset-slot="pairing-case"><div class="wishlist"><img src="nw-product-scroll-assets/2b9b6.svg" alt="" data-asset-slot="pairing-bookmark-1"></div></div><div class="card-text montserrat"><div class="card-names"><div class="card-brand"><span>브랜드명 1줄 초과 시 말줄임</span><img src="nw-product-scroll-assets/59975.svg" alt="" data-asset-slot="pairing-chevron-1"></div><p class="card-title">Product name 상품명 1줄 초과 시 말줄임</p></div><p class="card-price">₩ 000,000</p></div></article>
+<article class="card" data-node-id="2104:54910"><div class="card-media crop"><img src="nw-product-scroll-assets/e512a.png" alt="Every Damn Day 키링" data-asset-slot="pairing-keyring"><div class="wishlist"><img src="nw-product-scroll-assets/2b9b6.svg" alt="" data-asset-slot="pairing-bookmark-2"></div></div><div class="card-text montserrat"><div class="card-names"><div class="card-brand"><span>브랜드명 1줄 초과 시 말줄임</span><img src="nw-product-scroll-assets/59975.svg" alt="" data-asset-slot="pairing-chevron-2"></div><p class="card-title">Product name 상품명 1줄 초과 시 말줄임</p></div><div><div class="discount-row"><span class="original-price">000,000</span><span class="discount">5%</span></div><p class="card-price">₩ 609,000</p></div></div></article>
+<article class="card" data-node-id="2104:54911"><div class="card-media empty"><div class="wishlist"><img src="nw-product-scroll-assets/2b9b6.svg" alt="" data-asset-slot="pairing-bookmark-3"></div></div><div class="card-text montserrat"><div class="card-names"><div class="card-brand"><span>브랜드명 1줄 초과 시 말줄임</span><img src="nw-product-scroll-assets/59975.svg" alt="" data-asset-slot="pairing-chevron-3"></div><p class="card-title">Product name 상품명 1줄 초과 시 말줄임</p></div><div><div class="discount-row"><span class="original-price">000,000</span><span class="discount">5%</span></div><p class="card-price">₩ 609,000</p></div></div></article>
+</div><div class="pairing-overlay" data-node-id="2104:54920"><div class="wishlist"><img src="nw-product-scroll-assets/2b9b6.svg" alt="" data-asset-slot="pairing-bookmark-overlay"></div></div></section>
+<section class="size-info" id="content-end" data-node-id="2104:54922"><p class="druk">Size Info</p></section></section>
+</div></div>
+<div class="navigation-backdrop" aria-hidden="true"></div><div id="statusbar" aria-hidden="true"></div><nav class="navigation" data-node-id="2104:54877" aria-label="상단 메뉴"><a class="menu" href="nw-menu.html" aria-label="Nice Weather 메뉴"><img src="nw-product-scroll-assets/e7846.svg" alt="" data-asset-slot="navigation-menu"></a><img class="logo" src="nw-product-scroll-assets/4e8bd.svg" alt="Nice Weather" data-asset-slot="navigation-logo"><img class="bag" src="nw-product-scroll-assets/32b99.svg" alt="쇼핑백" data-asset-slot="navigation-bag"></nav>
+<div class="purchase-bar" data-node-id="2104:54878"><div class="purchase-actions"><div class="purchase-icon"><img src="nw-product-scroll-assets/d8839.svg" alt="공유" data-asset-slot="purchase-share"></div><div class="purchase-icon"><img src="nw-product-scroll-assets/7d445.svg" alt="북마크" data-asset-slot="purchase-bookmark"></div><div class="buy-now druk">Buy now</div></div></div>
+</div></div></div></main><script>
+const stage = document.getElementById('stage');
+const scroll = document.getElementById('scroll');
+const content = document.getElementById('content');
+const detail = document.querySelector('.detail');
+const end = document.getElementById('content-end');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+const timing = {topHold: 2000, bottomHold: 2000, downSpeed: 120, upSpeed: 480, manualHold: 6000};
+let phase = 'top', elapsed = 0, duration = timing.topHold, from = 0, to = 0;
+let maxScroll = 0, last = 0, ready = false, pausedUntil = 0, rebase = false;
+let resolveReady;
+const readyPromise = new Promise(resolve => { resolveReady = resolve; });
+function fit() {
+  stage.style.transform = `translate(-50%,-50%) scale(${Math.min(innerWidth / 2880, innerHeight / 1642.5)})`;
+}
+function measure() {
+  // Stop at the final designed section; the source's empty 680px tail is excluded.
+  const endHeight = parseFloat(getComputedStyle(end).height);
+  const detailEnd = end.offsetTop + endHeight;
+  detail.style.height = `${detailEnd}px`;
+  content.style.height = `${detail.offsetTop + detailEnd}px`;
+  maxScroll = Math.max(0, scroll.scrollHeight - scroll.clientHeight);
+}
+function ease(p) { return (1 - Math.cos(Math.PI * Math.max(0, Math.min(1, p)))) / 2; }
+function begin(next) {
+  phase = next;
+  elapsed = 0;
+  from = scroll.scrollTop;
+  to = next === 'down' ? maxScroll : next === 'up' ? 0 : from;
+  duration = next === 'top' ? timing.topHold : next === 'bottom' ? timing.bottomHold :
+    next === 'down' ? Math.max(1000, Math.abs(to - from) / timing.downSpeed * 1000) :
+    Math.max(1000, Math.abs(to - from) / timing.upSpeed * 1000);
+}
+function nextPhase() { begin(phase === 'top' ? 'down' : phase === 'down' ? 'bottom' : phase === 'bottom' ? 'up' : 'top'); }
+function takeControl(event) {
+  if (!event.isTrusted) return;
+  pausedUntil = performance.now() + timing.manualHold;
+  rebase = true;
+}
+function animate(now) {
+  const dt = Math.min(100, Math.max(0, now - last));
+  last = now;
+  if (ready && !document.hidden && !reduced.matches && now >= pausedUntil) {
+    if (rebase) {
+      measure();
+      begin(scroll.scrollTop >= maxScroll - 1 ? 'bottom' : 'down');
+      rebase = false;
+    }
+    elapsed += dt;
+    while (elapsed >= duration) {
+      scroll.scrollTop = to;
+      const extra = elapsed - duration;
+      nextPhase();
+      elapsed = extra;
+    }
+    if (phase === 'down' || phase === 'up') scroll.scrollTop = from + (to - from) * ease(elapsed / duration);
+  }
+  requestAnimationFrame(animate);
+}
+for (const name of ['wheel', 'pointerdown', 'touchstart']) scroll.addEventListener(name, takeControl, {passive: true});
+scroll.addEventListener('keydown', event => {
+  if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)) takeControl(event);
+});
+addEventListener('resize', fit);
+document.addEventListener('visibilitychange', () => { last = performance.now(); });
+reduced.addEventListener('change', () => { rebase = true; last = performance.now(); });
+fit();
+Promise.all([...document.images].map(img => img.decode().catch(() => {})).concat([document.fonts.ready])).then(() => {
+  measure();
+  scroll.scrollTop = 0;
+  begin('top');
+  ready = true;
+  document.documentElement.dataset.ready = 'true';
+  resolveReady(true);
+  last = performance.now();
+  requestAnimationFrame(animate);
+});
+window.productScrollLoop = {
+  ready: readyPromise,
+  get phase() { return rebase ? 'manual' : phase; },
+  get maxScroll() { return maxScroll; },
+  get cycleDuration() { return timing.topHold + timing.bottomHold + maxScroll / timing.downSpeed * 1000 + maxScroll / timing.upSpeed * 1000; }
+};
+
+</script></body></html>
