@@ -1147,7 +1147,7 @@ updatePurchasePanelFooterLimit();
 &lt;/script&gt;
   &lt;script&gt;window.productDemoReset=function(){showSlide(0);productSelects.forEach(function(select){closeProductSelect(select);select.classList.remove(&#x27;is-selected&#x27;);select.querySelector(&#x27;.product-select__trigger span&#x27;).textContent=select.dataset.selectName.toUpperCase();select.querySelectorAll(&#x27;[role=&quot;option&quot;]&#x27;).forEach(function(option){option.setAttribute(&#x27;aria-selected&#x27;,&#x27;false&#x27;)})});selectedOptions.color=selectedOptions.size=&#x27;&#x27;;updateQuantity(1);updatePurchaseState();closeAdditionalInfo();productGallery.classList.remove(&#x27;is-expanded&#x27;);galleryMore.innerHTML=&#x27;&lt;span&gt;＋&lt;/span&gt; Show more&#x27;;purchaseStatus.textContent=&#x27;&#x27;;document.querySelector(&#x27;.menu-close&#x27;).click();document.scrollingElement.scrollTop=0};&lt;/script&gt;&lt;/body&gt;
 &lt;/html&gt;
-" title="Nice Weather 상품 이미지와 COLOR 옵션 반복 시연" loading="eager"></iframe></div></div></div>
+" title="Nice Weather 이미지 세 번 전환과 색상·사이즈 선택 반복 시연" loading="eager"></iframe></div></div></div>
 <script>
 const stage=document.getElementById('stage'),frame=document.getElementById('product-frame');
 function fit(){stage.style.transform=`translate(-50%,-50%) scale(${Math.min(innerWidth/1920,innerHeight/1095)})`}
@@ -1157,14 +1157,24 @@ let doc,win,pointer,arrow,ripple,ready=false,stepIndex=0,elapsed=0,last=0,pulseA
 let cursor={x:680,y:540},origin={...cursor},destination={...cursor};
 let resolveReady;const readyPromise=new Promise(resolve=>resolveReady=resolve);
 const color='.product-select[data-select-name="color"] .product-select__trigger';
+const grey='.product-select[data-select-name="color"] [data-value="grey"]';
+const size='.product-select[data-select-name="size"] .product-select__trigger';
+const free='.product-select[data-select-name="size"] [data-value="free"]';
 const steps=[
  {name:'first-image',duration:2000},
  {name:'move-image-two',duration:650,target:'.gallery-next',arrow:true},
- {name:'second-image',duration:1900,click:'.gallery-next',arrow:true},
- {name:'third-image',duration:2200,click:'.gallery-next',arrow:true},
- {name:'move-option',duration:850,target:color},
- {name:'option-open',duration:3300,click:color},
- {name:'reset',duration:500,reset:true}
+ {name:'second-image',duration:1600,click:'.gallery-next',arrow:true},
+ {name:'third-image',duration:1600,click:'.gallery-next',arrow:true},
+ {name:'fourth-image',duration:2100,click:'.gallery-next',arrow:true},
+ {name:'move-color',duration:800,target:color},
+ {name:'color-open',duration:1000,click:color},
+ {name:'move-grey',duration:450,target:grey},
+ {name:'color-selected',duration:900,click:grey},
+ {name:'move-size',duration:450,target:size},
+ {name:'size-open',duration:800,click:size},
+ {name:'move-free',duration:350,target:free},
+ {name:'options-selected',duration:2600,click:free},
+ {name:'reset',duration:600,reset:true}
 ];
 const cycleDuration=steps.reduce((sum,step)=>sum+step.duration,0);
 function ease(p){return (1-Math.cos(Math.PI*Math.max(0,Math.min(1,p))))/2}
