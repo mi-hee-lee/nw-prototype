@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><title>Nice Weather · Yin and Yang Menu Loop</title><style>
+html,body{margin:0;width:100%;height:1080px;overflow:hidden;background:#fff}
+#home-frame{display:block;width:100%;height:1080px;border:0;background:#fff}
+#demo-pointer,#demo-ripple{position:fixed;top:0;left:0;z-index:100;pointer-events:none;opacity:0;will-change:transform,opacity}
+#demo-pointer{width:22px;height:28px;transition:opacity 180ms ease;filter:drop-shadow(0 1px 2px #0005)}
+#demo-ripple{width:34px;height:34px;margin:-17px 0 0 -17px;border:2px solid #10069f;border-radius:50%;box-sizing:border-box;background:#10069f18}
+@media(prefers-reduced-motion:reduce){#demo-pointer,#demo-ripple{display:none}}
+</style></head><body>
+<iframe id="home-frame" src="../index.html" title="Nice Weather Home · 메뉴와 Yin and Yang 선택" height="1080" loading="eager"></iframe>
+<svg id="demo-pointer" aria-hidden="true" viewBox="0 0 22 28"><path d="M1.5 1.5V23L7.4 17.5L12.4 26L16.2 23.8L11.2 15.4H20Z" fill="#fff" stroke="#111" stroke-width="1.5" stroke-linejoin="round"/></svg>
+<div id="demo-ripple" aria-hidden="true"></div>
+<script>
+const frame = document.getElementById('home-frame');
+const pointer = document.getElementById('demo-pointer');
+const ripple = document.getElementById('demo-ripple');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+let resolveReady;
+const readyPromise = new Promise(resolve => { resolveReady = resolve; });
+let doc, win, root, ready = false, raf = 0, last = 0;
+let index = 0, elapsed = 0, manual = false, resumeAt = 0;
+let cursor = {x: 110, y: 150}, origin = {...cursor}, destination = {...cursor};
+let pulseAge = Infinity;
+const steps = [
+  {name: 'home', duration: 1800},
+  {name: 'move-menu', duration: 600, target: '.menu-toggle'},
+  {name: 'open-menu', duration: 450, click: '.menu-toggle'},
+  {name: 'menu', duration: 1500},
+  {name: 'move-brand', duration: 700, target: '.brand-tab[data-brand="yay"] > span'},
+  {name: 'select-brand', duration: 450, click: '.brand-tab[data-brand="yay"]'},
+  {name: 'yin-and-yang', duration: 3200},
+  {name: 'move-close', duration: 600, target: '.menu-close'},
+  {name: 'close-menu', duration: 450, click: '.menu-close'},
+  {name: 'return-home', duration: 650}
+];
+const cycleDuration = steps.reduce((total, step) => total + step.duration, 0);
+function ease(value) { return (1 - Math.cos(Math.PI * Math.min(1, Math.max(0, value)))) / 2; }
+function center(selector) {
+  const rect = doc.querySelector(selector).getBoundingClientRect();
+  return {x: rect.x + rect.width / 2, y: rect.y + rect.height / 2};
+}
+function hideIndicators() { pointer.style.opacity = '0'; ripple.style.opacity = '0'; }
+function enterStep() {
+  const step = steps[index];
+  elapsed = 0;
+  origin = {...cursor};
+  if (step.target) destination = center(step.target);
+  if (step.click) {
+    doc.querySelector(step.click).click();
+    pulseAge = 0;
+  }
+}
+function reset() {
+  doc.querySelector('.menu-close').click();
+  doc.querySelector('.brand-tab[data-brand="market"]').click();
+  root.scrollTop = 0;
+  cursor = {x: Math.min(frame.clientWidth - 32, 110), y: 150};
+  index = 0;
+  pulseAge = Infinity;
+  manual = false;
+  enterStep();
+  hideIndicators();
+}
+function takeControl(event) {
+  if (!event.isTrusted) return;
+  manual = true;
+  resumeAt = performance.now() + 6000;
+  hideIndicators();
+}
+function animate(now) {
+  const dt = Math.min(100, Math.max(0, now - last));
+  last = now;
+  if (ready && !document.hidden && !reduced.matches) {
+    if (manual) {
+      if (doc.querySelector('.side-menu.is-open,.search-panel.is-open')) resumeAt = now + 6000;
+      else if (now >= resumeAt) reset();
+    } else {
+      elapsed += dt;
+      if (elapsed >= steps[index].duration) {
+        index += 1;
+        if (index === steps.length) reset();
+        else enterStep();
+      }
+      const step = steps[index];
+      if (step.target) {
+        destination = center(step.target);
+        const p = ease(elapsed / step.duration);
+        cursor = {x: origin.x + (destination.x - origin.x) * p, y: origin.y + (destination.y - origin.y) * p};
+      }
+      pointer.style.transform = `translate(${cursor.x}px,${cursor.y}px)`;
+      pointer.style.opacity = step.name === 'home' || step.name === 'return-home' ? '0' : '1';
+      pulseAge += dt;
+      const p = Math.min(1, pulseAge / 450);
+      ripple.style.transform = `translate(${cursor.x}px,${cursor.y}px) scale(${.35 + p * .85})`;
+      ripple.style.opacity = String((1 - p) * .65);
+    }
+  }
+  raf = requestAnimationFrame(animate);
+}
+async function connect() {
+  cancelAnimationFrame(raf);
+  ready = false;
+  try {
+    win = frame.contentWindow;
+    doc = win.document;
+    root = doc.scrollingElement;
+    root.style.scrollBehavior = 'auto';
+    const menuStyle = doc.createElement('style');
+    menuStyle.textContent = '.menu-links{font-size:16px;line-height:24px}';
+    doc.head.append(menuStyle);
+    await Promise.all([...doc.images].map(img => img.decode().catch(() => {})));
+    await doc.fonts.ready;
+    reset();
+    for (const name of ['pointerdown', 'touchstart', 'wheel', 'keydown']) win.addEventListener(name, takeControl, {passive: true});
+    ready = true;
+    document.documentElement.dataset.ready = 'true';
+    resolveReady(true);
+    last = performance.now();
+    raf = requestAnimationFrame(animate);
+  } catch {
+    document.documentElement.dataset.ready = 'unavailable';
+    resolveReady(false);
+  }
+}
+frame.addEventListener('load', connect);
+if (frame.contentDocument?.readyState === 'complete' && frame.contentDocument.querySelector('.site-header')) connect();
+document.addEventListener('visibilitychange', () => { last = performance.now(); });
+addEventListener('resize', () => {
+  if (!ready || manual || reduced.matches) return;
+  reset();
+  last = performance.now();
+});
+reduced.addEventListener('change', () => {
+  hideIndicators();
+  if (!reduced.matches && ready && !manual) reset();
+  last = performance.now();
+});
+window.menuLoop = {
+  ready: readyPromise,
+  get phase() { return manual ? 'manual' : steps[index].name; },
+  get cycleDuration() { return cycleDuration; },
+  get viewportHeight() { return frame.clientHeight; }
+};
+
+</script></body></html>
